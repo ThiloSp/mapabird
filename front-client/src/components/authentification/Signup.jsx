@@ -21,7 +21,7 @@ class Signup extends Component {
           username: "",
           password: ""
         });
-        this.props.getUser(response)
+        this.props.getUser(response) /* holt User-Daten aus dem Back und schickt sie nach App.js */
       })
       .catch(error => console.log(error));
   };
@@ -37,7 +37,7 @@ class Signup extends Component {
         <div>
           <h2>This is sign-up</h2>
           <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
+
         </div>
         <div>
           <form onSubmit={this.handleFormSubmit}>
@@ -51,7 +51,7 @@ class Signup extends Component {
 
             <label>Password:</label>
             <input
-              type="text"
+              type="password"
               name="password"
               value={this.state.password}
               onChange={e => this.handleChange(e)}
