@@ -21,7 +21,7 @@ class Signup extends Component {
           username: "",
           password: ""
         });
-        // this.props.getUser(response)
+        this.props.getUser(response)
       })
       .catch(error => console.log(error));
   };
@@ -62,7 +62,6 @@ class Signup extends Component {
 
           <p>
             Already have account?
-            <Link to="/login"> Login</Link>
             <Link to="/login"> Login</Link>
           </p>
         </div>

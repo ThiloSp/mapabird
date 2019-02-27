@@ -7,6 +7,7 @@ const bcryptSalt = 10;
 
 
 router.post("/login", (req, res, next) => {
+  console.log("entra")
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
       res
@@ -33,6 +34,7 @@ router.post("/login", (req, res, next) => {
 
 
 router.post("/signup", (req, res, next) => {
+  console.log("entra")
   const username = req.body.username;
   const password = req.body.password;
   if (username === "" || password === "") {
@@ -73,12 +75,12 @@ router.post("/signup", (req, res, next) => {
           .json({ message: "Saving user to database went wrong." });
         return;
       }
-      req.login(aNewUser, err => {
+      req.login(newUser, err => {
         if (err) {
           res.status(500).json({ message: "Login after signup went bad." });
           return;
         }
-        res.status(200).json(aNewUser);
+        res.status(200).json(newUser);
       });
     });
   });

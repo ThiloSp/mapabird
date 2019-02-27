@@ -64,6 +64,8 @@ hbs.registerHelper('ifUndefined', (value, options) => {
   }
 });
   
+require('./passport')(app);
+app.use(flash());
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
@@ -76,8 +78,7 @@ app.use(session({
   saveUninitialized: true,
   store: new MongoStore( { mongooseConnection: mongoose.connection })
 }))
-app.use(flash());
-require('./passport')(app);
+
 
 app.use(cors({
   credentials: true,
@@ -86,7 +87,6 @@ app.use(cors({
 
 const index = require('./routes/index');
 app.use('/', index);
-
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
       
