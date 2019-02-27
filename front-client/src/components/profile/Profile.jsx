@@ -48,17 +48,18 @@ class Profile extends Component {
         <div>
           <h2>Welcome, {this.state.loggedInUser.username}</h2>
           <Link to="/">Home</Link>
+          <Link to="/">
+            <button onClick={() => this.logoutUser()}>Logout</button>
+          </Link>
         </div>
       );
     } else {
       return (
         <div>
           <h2>Hello, you are not logged in</h2>
-          <ul>
-            <li>
-              <Link to="/signup">Signup</Link>
-            </li>
-          </ul>
+          <Link to="/">Home</Link>
+          <Link to="/login">Log-in</Link>
+          <Link to="/signup">Signup</Link>
         </div>
       );
     }
