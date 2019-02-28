@@ -21,7 +21,9 @@ class Signup extends Component {
           username: "",
           password: ""
         });
-        this.props.getUser(response) /* holt User-Daten aus dem Back und schickt sie nach App.js */
+        this.props.getUser(
+          response
+        ); /* holt User-Daten aus dem Back und schickt sie nach App.js */
       })
       .catch(error => console.log(error));
   };
@@ -36,8 +38,9 @@ class Signup extends Component {
       <div>
         <div>
           <h2>This is sign-up</h2>
-          <Link to="/">Home</Link>
-
+          <div>
+            <Link to="/">Home</Link>
+          </div>
         </div>
         <div>
           <form onSubmit={this.handleFormSubmit}>
@@ -62,7 +65,9 @@ class Signup extends Component {
 
           <p>
             Already have account?
-            <Link to="/login"> Login</Link>
+            <div>
+              <Link to="/login"> Login</Link>
+            </div>
           </p>
         </div>
       </div>

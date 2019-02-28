@@ -6,7 +6,9 @@ export default class Mapbirds extends Component {
     return (
       <div>
         <h2>This is Map Birds</h2>
+        <div>
         <Link to="/">Home</Link>
+        </div>
       </div>
     )
   }

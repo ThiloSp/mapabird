@@ -31,7 +31,9 @@ class Login extends Component {
     return (
       <div>
         <h2>This is Login</h2>
-        <Link to="/">Home</Link>
+        <div>
+          <Link to="/">Home</Link>
+        </div>
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input
@@ -52,7 +54,9 @@ class Login extends Component {
         </form>
         <p>
           Don't have account?
-          <Link to={"/signup"}> Signup</Link>
+          <div>
+            <Link to={"/signup"}> Signup</Link>
+          </div>
         </p>
       </div>
     );
