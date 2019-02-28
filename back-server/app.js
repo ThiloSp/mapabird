@@ -17,7 +17,7 @@ const cors = require('cors');
 
 
 mongoose
-  .connect('mongodb://localhost/back-server', {useNewUrlParser: true})
+  .connect(process.env.DBURL, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -90,5 +90,8 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
       
-
+app.use((req, res, next) => {
+  res.sendFile(__dirname + "/public/index.html");
+ });
+ 
 module.exports = app;

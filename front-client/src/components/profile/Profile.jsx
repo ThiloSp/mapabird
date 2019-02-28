@@ -46,7 +46,7 @@ class Profile extends Component {
     if (this.state.loggedInUser) {
       return (
         <div>
-          <h2>Welcome, {this.state.loggedInUser.username}</h2>
+          <h2>Welcome, {this.state.loggedInUser.username}!</h2>
           <Link to="/">Home</Link>
           <Link to="/">
             <button onClick={() => this.logoutUser()}>Logout</button>
@@ -56,7 +56,7 @@ class Profile extends Component {
     } else {
       return (
         <div>
-          <h2>Hello, you are not logged in</h2>
+          <h2>Oh sorry, you are not logged in!</h2>
           <Link to="/">Home</Link>
           <Link to="/login">Log-in</Link>
           <Link to="/signup">Signup</Link>

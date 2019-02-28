@@ -5,7 +5,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Signup from "./components/authentification/Signup";
 import Login from "./components/authentification/Login";
 import Profile from "./components/profile/Profile";
-import AuthService from './components/authentification/auth-service';
+import AuthService from "./components/authentification/auth-service";
+import Mapbirds from "./components/map/Mapbirds";
 
 class App extends Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class App extends Component {
       return (
         <div className="App">
           <Switch>
+            <Route exact path="/mapbirds" component={Mapbirds} />
             <Route exact path="/" component={Home} />
             <Route
               exact
@@ -71,6 +73,7 @@ class App extends Component {
       return (
         <div className="App">
           <Switch>
+            <Route exact path="/mapbirds" component={Mapbirds} />
             <Route exact path="/" component={Home} />
             <Route
               exact
@@ -100,31 +103,3 @@ class App extends Component {
 }
 
 export default App;
-//   render() {
-//     return (
-//       <div className="App">
-//         <Switch>
-//           <Route exact path="/" component={Home} />
-//           <Route
-//             exact
-//             path="/signup"
-//             render={() => <Signup getUser={this.getTheUser} />}
-//           />
-//           <Route exact path="/login" component={Login} />
-//           <Route
-//             exact
-//             path="/profile"
-//             render={() => (
-//               <Profile
-//                 getUser={this.getTheUser}
-//                 userInSession={this.state.loggedInUser}
-//               />
-//             )}
-//           />
-//         </Switch>
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
