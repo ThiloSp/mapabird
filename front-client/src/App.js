@@ -18,7 +18,7 @@ class App extends Component {
   fetchUser() {
     if (this.state.loggedInUser === null) {
       this.service
-        .loggedin()
+        .loggedin() //checkt ob, eingeloggt?
         .then(response => {
           this.setState({
             loggedInUser: response
