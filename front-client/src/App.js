@@ -7,6 +7,7 @@ import Login from "./components/authentification/Login";
 import Profile from "./components/profile/Profile";
 import AuthService from "./components/authentification/auth-service";
 import Mapbirds from "./components/map/Mapbirds";
+import Navbar from "./components/navbar/Navbar";
 
 class App extends Component {
   constructor(props) {
@@ -40,65 +41,55 @@ class App extends Component {
 
   render() {
     this.fetchUser();
-    if (this.state.loggedInUser) {
-      return (
-        <div className="App">
-          <Switch>
-            <Route exact path="/mapbirds" component={Mapbirds} />
-            <Route exact path="/" component={Home} />
-            <Route
-              exact
-              path="/profile"
-              render={() => (
+    return (
+      <div className="App">
+      {/* <Navbar changeUser={this.changeUser} user={this.state.user}/> */}
+      <Navbar getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>
+        <Switch>
+          <Route exact path="/mapbirds" component={Mapbirds} />
+          <Route exact path="/" component={Home} />
+          <Route
+            exact
+            path="/profile"
+            render={() =>
+              this.state.loggedInUser ? (
                 <Profile
                   getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
-              )}
-            />
-            <Route
-              exact
-              path="/login"
-              render={() => <Redirect to="/profile" />}
-            />
-            <Route
-              exact
-              path="/signup"
-              render={() => <Redirect to="/profile" />}
-            />
-          </Switch>
-        </div>
-      );
-    } else {
-      return (
-        <div className="App">
-          <Switch>
-            <Route exact path="/mapbirds" component={Mapbirds} />
-            <Route exact path="/" component={Home} />
-            <Route
-              exact
-              path="/signup"
-              render={() => <Signup getUser={this.getTheUser} />}
-            />
-            <Route
-              exact
-              path="/login"
-              render={() => <Login getUser={this.getTheUser} />}
-            />
-            <Route
-              exact
-              path="/profile"
-              render={() => (
+              ) : (
                 <Profile
                   getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
-              )}
-            />
-          </Switch>
-        </div>
-      );
-    }
+              )
+            }
+          />
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              this.state.loggedInUser ? (
+                <Redirect to="/profile" />
+              ) : (
+                <Login getUser={this.getTheUser} />
+              )
+            }
+          />
+          <Route
+            exact
+            path="/signup"
+            render={() =>
+              this.state.loggedInUser ? (
+                <Redirect to="/profile" />
+              ) : (
+                <Signup getUser={this.getTheUser} />
+              )
+            }
+          />
+        </Switch>
+      </div>
+    );
   }
 }
 

@@ -52,12 +52,10 @@ class Login extends Component {
 
           <input type="submit" value="Login" />
         </form>
-        <p>
-          Don't have account?
-          <div>
-            <Link to={"/signup"}> Signup</Link>
-          </div>
-        </p>
+        <p>Don't have account?</p>
+        <div>
+          <Link to={"/signup"}> Signup</Link>
+        </div>
       </div>
     );
   }

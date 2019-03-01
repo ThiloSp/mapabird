@@ -1,0 +1,22 @@
+.nav {
+  background-color: #061324;
+  color: white;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav li {
+  padding: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}

@@ -24,7 +24,7 @@ class Profile extends Component {
     });
   };
 
-  handleFileUpload = e => {
+  /* handleFileUpload = e => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
 
     const uploadData = new FormData();
@@ -40,7 +40,7 @@ class Profile extends Component {
       .catch(err => {
         console.log("Error while uploading the file: ", err);
       });
-  };
+  }; */
 
   render() {
     if (this.state.loggedInUser) {
