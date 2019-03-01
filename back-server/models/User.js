@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema(
   {
     username: String,
-    password: String
+    password: String,
+    photoPath: String,
+    photoName: String,
+    topics: [{ type: Schema.Types.ObjectId, ref: "Topic" }],
   },
   {
     timestamps: {
