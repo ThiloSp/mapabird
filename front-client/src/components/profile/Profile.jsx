@@ -47,6 +47,7 @@ class Profile extends Component {
       return (
         <div>
           <h2>Welcome, {this.state.loggedInUser.username}!</h2>
+          <img src={this.state.loggedInUser.photoPath} alt=""/>
         </div>
       );
     } else {

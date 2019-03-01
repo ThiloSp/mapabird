@@ -7,7 +7,6 @@ const bcryptSalt = 10;
 
 
 router.post("/login", (req, res, next) => {
-  console.log("entra")
   passport.authenticate("local", (err, theUser, failureDetails) => {
     if (err) {
       res
@@ -34,9 +33,11 @@ router.post("/login", (req, res, next) => {
 
 
 router.post("/signup", (req, res, next) => {
-  console.log("entra")
   const username = req.body.username;
   const password = req.body.password;
+  // const photoPath = req.file.secure_url;
+  // const photoName = req.file.originalname;
+  
   if (username === "" || password === "") {
     res.status(400).json({ message: "Provide username and password" });
     return;
@@ -66,6 +67,8 @@ router.post("/signup", (req, res, next) => {
     const newUser = new User({
       username,
       password: hashPass
+      // photoPath,
+      // photoName
     });
 
     newUser.save(err => {

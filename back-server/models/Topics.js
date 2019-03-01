@@ -7,6 +7,7 @@ const topicSchema = new Schema(
     content: String,
     creatorId: { type: Schema.Types.ObjectId, ref: "User" },
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
+    areas: { type: Schema.Types.ObjectId, ref: "Area" },
     picPath: String,
     picName: String
   },

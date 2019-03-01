@@ -5,9 +5,10 @@ const UserSchema = new Schema(
   {
     username: String,
     password: String,
-    photoPath: String,
+    photoPath: { type: String, default: '../../images/user.png' },
     photoName: String,
     topics: [{ type: Schema.Types.ObjectId, ref: "Topic" }],
+    areas: [{ type: Schema.Types.ObjectId, ref: "Area" }],
   },
   {
     timestamps: {
