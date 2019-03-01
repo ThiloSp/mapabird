@@ -12,7 +12,7 @@ birdRoutes.get("/", (req, res, next)=> {
         url:`https://ebird.org/ws2.0/data/obs/ES/historic/2010/1/${i}?rank=mrec&detail=full&cat=species`,
         // responseType:'stream'
         headers: {
-          'X-eBirdApiToken': 'on81na84d12p'
+          'X-eBirdApiToken': 'apikey'
         }
       })
       .then(answer=> {
