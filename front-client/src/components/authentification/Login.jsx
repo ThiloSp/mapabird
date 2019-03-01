@@ -31,9 +31,6 @@ class Login extends Component {
     return (
       <div>
         <h2>This is Login</h2>
-        <div>
-          <Link to="/">Home</Link>
-        </div>
         <form onSubmit={this.handleFormSubmit}>
           <label>Username:</label>
           <input
