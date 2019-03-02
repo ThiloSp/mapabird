@@ -20,10 +20,10 @@ export default class AddProfilePic extends Component {
     return (
       <div>
         <h2>Change Profile Pic</h2>
-        <form>
+        <form onSubmit={e => this.handleSubmit(e)}>
           <label>Upload your photo</label>
-          {/* <input type="file" onChange={e => this.handleFileUpload(e)} /> */}
           <input type="file" onChange={e => this.props.handleChange(e)} />
+          <button type="submit">Save new thing</button>
         </form>
       </div>
     );

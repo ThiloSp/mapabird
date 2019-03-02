@@ -14,4 +14,6 @@ uploads.post('/upload', uploader.single("photoPath"), (req, res, next) => {
     res.json({ secure_url: req.file.secure_url });
 })
 
+
+
 module.exports = uploads;

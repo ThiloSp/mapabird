@@ -28,14 +28,28 @@ class Profile extends Component {
       .handleUpload(uploadData)
       .then(response => {
         console.log("response is: ", response);
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-        this.setState({...this.state, loggedInUser: {photoPath: response.secure_url}});
-        console.log(this.state)
+        this.setState({
+          ...this.state,
+          loggedInUser: { photoPath: response.secure_url } // man sieht Foto, es wird aber nicht gespeichert. Muss iregndwie in die Datenbank rein. Eventuell mit handleSubmit in Kommentar
+        });
+        console.log(this.state);
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);
       });
   };
+
+ /*  handleSubmit = e => {
+    e.preventDefault();
+    this.profileService
+      .savePhoto(this.state)
+      .then(res => {
+        console.log("added: ", res);
+      })
+      .catch(err => {
+        console.log("Error while adding the photo: ", err);
+      });
+  }; */
 
   render() {
     if (this.state.loggedInUser) {
@@ -44,7 +58,10 @@ class Profile extends Component {
           <h2>Welcome, {this.state.loggedInUser.username}!</h2>
           <img src={this.state.loggedInUser.photoPath} alt="" />
           {/* <AddProfilePic userInSession={this.state.loggedInUser} /> */}
-          <AddProfilePic userInSession={this.state.loggedInUser} handleChange={this.handleFileUpload}/>
+          <AddProfilePic
+            userInSession={this.state.loggedInUser}
+            handleChange={this.handleFileUpload}
+          />
         </div>
       );
     } else {
