@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../authentification/auth-service";
+import AddProfilePic from "./addProfilePic";
 
 class Profile extends Component {
   constructor(props) {
@@ -17,29 +18,11 @@ class Profile extends Component {
     this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
   }
 
-  logoutUser = () => {
+  /* logoutUser = () => {
     this.service.logout().then(() => {
       this.setState({ loggedInUser: null });
       this.props.getUser(null);
     });
-  };
-
-  /* handleFileUpload = e => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
-
-    const uploadData = new FormData();
-
-    uploadData.append("imageUrl", e.target.files[0]);
-    this.service
-      .handleUpload(uploadData)
-      .then(response => {
-        // console.log('response is: ', response);
-        // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-        this.setState({ imageUrl: response.secure_url });
-      })
-      .catch(err => {
-        console.log("Error while uploading the file: ", err);
-      });
   }; */
 
   render() {
@@ -47,7 +30,8 @@ class Profile extends Component {
       return (
         <div>
           <h2>Welcome, {this.state.loggedInUser.username}!</h2>
-          <img src={this.state.loggedInUser.photoPath} alt=""/>
+          <img src={this.state.loggedInUser.photoPath} alt="" />
+          <AddProfilePic userInSession={this.state.loggedInUser} />
         </div>
       );
     } else {

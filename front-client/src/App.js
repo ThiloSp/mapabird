@@ -43,8 +43,10 @@ class App extends Component {
     this.fetchUser();
     return (
       <div className="App">
-      {/* <Navbar changeUser={this.changeUser} user={this.state.user}/> */}
-      <Navbar getUser={this.getTheUser} userInSession={this.state.loggedInUser}/>
+        <Navbar
+          getUser={this.getTheUser}
+          userInSession={this.state.loggedInUser}
+        />
         <Switch>
           <Route exact path="/mapbirds" component={Mapbirds} />
           <Route exact path="/" component={Home} />
@@ -54,12 +56,12 @@ class App extends Component {
             render={() =>
               this.state.loggedInUser ? (
                 <Profile
-                  getUser={this.getTheUser}
+                  // getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
               ) : (
                 <Profile
-                  getUser={this.getTheUser}
+                  // getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
               )
