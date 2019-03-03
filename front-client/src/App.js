@@ -8,6 +8,8 @@ import Profile from "./components/profile/Profile";
 import AuthService from "./components/authentification/auth-service";
 import Mapbirds from "./components/map/Mapbirds";
 import Navbar from "./components/navbar/Navbar";
+import ThreadForm from "./components/forum/ThreadForm";
+import ThreadListAll from "./components/forum/ThreadListAll";
 
 class App extends Component {
   constructor(props) {
@@ -49,6 +51,7 @@ class App extends Component {
         />
         <Switch>
           <Route exact path="/mapbirds" component={Mapbirds} />
+          <Route exact path="/threads" component={ThreadListAll} />
           <Route exact path="/" component={Home} />
           <Route
             exact
@@ -61,6 +64,23 @@ class App extends Component {
                 />
               ) : (
                 <Profile
+                  // getUser={this.getTheUser}
+                  userInSession={this.state.loggedInUser}
+                />
+              )
+            }
+          />
+           <Route
+            exact
+            path="/threadform"
+            render={() =>
+              this.state.loggedInUser ? (
+                <ThreadForm
+                  // getUser={this.getTheUser}
+                  userInSession={this.state.loggedInUser}
+                />
+              ) : (
+                <ThreadForm
                   // getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />

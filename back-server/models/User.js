@@ -7,7 +7,7 @@ const UserSchema = new Schema(
     password: String,
     photoPath: { type: String, default: '../../images/user.png' },
     photoName: String,
-    topics: [{ type: Schema.Types.ObjectId, ref: "Topic" }],
+    threads: [{ type: Schema.Types.ObjectId, ref: "Thread" }],
     areas: [{ type: Schema.Types.ObjectId, ref: "Area" }],
   },
   {

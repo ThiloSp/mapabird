@@ -8,6 +8,9 @@ const home = () => {
       <div>
         <Link to="/mapbirds">map birds</Link>
       </div>
+      <div>
+        <Link to="/threads">Forum</Link>
+      </div>
     </div>
   );
 };

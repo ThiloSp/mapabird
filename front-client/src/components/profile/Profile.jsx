@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "../authentification/auth-service";
-import AddProfilePic from "./addProfilePic";
 import ProfileService from "./profile-service";
+import AddProfilePic from "./addProfilePic";
 
 class Profile extends Component {
   constructor(props) {
@@ -62,6 +62,7 @@ class Profile extends Component {
             userInSession={this.state.loggedInUser}
             handleChange={this.handleFileUpload}
           />
+          <Link to="/threadform">New Thread</Link>
         </div>
       );
     } else {

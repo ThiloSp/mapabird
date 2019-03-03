@@ -93,6 +93,8 @@ const uploads = require('./routes/uploads');
 app.use('/uploads', uploads)
 const birdRoutes = require('./routes/birds');
 app.use('/birds', birdRoutes);
+const forumRoutes = require('./routes/forum');
+app.use('/forum', forumRoutes);
       
 app.use((req, res, next) => {
   res.sendFile(__dirname + "/public/index.html");

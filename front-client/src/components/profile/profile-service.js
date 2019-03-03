@@ -11,7 +11,7 @@ class ProfileService {
 
   handleUpload(theFile) {
     console.log("file in service: ", theFile);
-    return this.service.post("/upload", theFile)
+    return this.service.post("/upload", theFile) //put?
     .then(res => res.data);
   }
 /* 
