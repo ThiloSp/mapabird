@@ -27,8 +27,17 @@ class ForumService {
 
   addNewComment = (title, content, threadId) => {
     return this.service
-    .post("/comment/new", { title, content, threadId })
-    .then(response => response.data);
+      .post("/comment/new", { title, content, threadId })
+      .then(response => response.data);
+  };
+
+  getCommentDetail = commentId => {
+    console.log("service: ",commentId)
+    return this.service
+    .post("/comment/details", { commentId })
+    .then(response => {
+      console.log("service response: ",response)
+        return response.data});
   };
 }
 

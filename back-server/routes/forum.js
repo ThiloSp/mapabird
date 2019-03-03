@@ -4,7 +4,6 @@ const Thread = require("../models/Thread");
 const Comment = require("../models/Comment")
 // const cloudinary = require("../options/cloudinary");
 const bodyParse = require("body-parser");
-const axios = require("axios");
 
 forumRoutes.get("/threads", (req, res, next) => {
   Thread.find({}).then(threads => {
@@ -70,6 +69,18 @@ forumRoutes.post("/comment/new", (req, res, next) => {
     .catch(err => {
       res.json(err);
     });
+});
+
+forumRoutes.post('/comment/details', (req, res, next) => {
+  console.log("comment-details req.body: ",req.body)
+  Comment.findById(req.body.commentId)
+  .then(theTask =>{
+      res.json(theTask);
+      console.log(theTask);
+  })
+  .catch( err =>{
+      res.json(err);
+  })
 });
 
 module.exports = forumRoutes;

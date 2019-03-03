@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ForumService from "./forum-service";
 import CommentForm from "./CommentForm";
+import CommentDetail from "./CommentDetail";
 
 export default class ThreadDetails extends Component {
   constructor(props) {
@@ -11,12 +12,12 @@ export default class ThreadDetails extends Component {
   }
 
   getSingleThread = () => {
-    console.log("this.props.match: ", this.props.match);
+    // console.log("this.props.match: ", this.props.match);
     const { params } = this.props.match; // to get id from URL
     this.service
       .getThreadDetails(params)
       .then(response => {
-        console.log("response: ", response);
+        // console.log("response: ", response);
         this.setState(response);
       })
       .catch(err => {
@@ -43,6 +44,7 @@ export default class ThreadDetails extends Component {
   };
 
   render() {
+    console.log(this.state.comments)
     return (
       <div>
         <h2>This is ThreadDetails</h2>
@@ -56,8 +58,7 @@ export default class ThreadDetails extends Component {
           this.state.comments.map((comment, index) => {
             return (
               <div key={index}>
-                <h5>{comment.title}</h5>
-                <p>{comment.content}</p>
+                <CommentDetail commentId={comment} />
               </div>
             );
           })}
