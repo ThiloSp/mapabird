@@ -19,10 +19,16 @@ class ForumService {
       .then(response => response.data);
   };
 
-  getThreadDetails = (params) => {
+  getThreadDetails = params => {
     return this.service
       .get(`/threads/${params.id}`) //params ok?
       .then(response => response.data);
+  };
+
+  addNewComment = (title, content, threadId) => {
+    return this.service
+    .post("/comment/new", { title, content, threadId })
+    .then(response => response.data);
   };
 }
 

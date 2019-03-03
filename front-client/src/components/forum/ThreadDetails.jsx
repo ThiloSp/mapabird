@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import ForumService from "./forum-service";
+import CommentForm from "./CommentForm";
 
 export default class ThreadDetails extends Component {
   constructor(props) {
@@ -10,21 +11,36 @@ export default class ThreadDetails extends Component {
   }
 
   getSingleThread = () => {
-    console.log("this.props.match: ", this.props.match)
+    console.log("this.props.match: ", this.props.match);
     const { params } = this.props.match; // to get id from URL
-    this.service.getThreadDetails(params)
+    this.service
+      .getThreadDetails(params)
       .then(response => {
-        console.log("response: ", response)
+        console.log("response: ", response);
         this.setState(response);
       })
       .catch(err => {
         console.log(err);
-      }); 
+      });
   };
 
   componentDidMount() {
     this.getSingleThread();
   }
+
+  renderAddCommentForm = () => {
+    if (!this.state.title) {
+      this.getSingleThread();
+    } else {
+      // pass the project and method getSingleProject() as a props down to AddTask component
+      return (
+        <CommentForm
+          theThread={this.state}
+          getTheThread={this.getSingleThread}
+        />
+      );
+    }
+  };
 
   render() {
     return (
@@ -32,6 +48,20 @@ export default class ThreadDetails extends Component {
         <h2>This is ThreadDetails</h2>
         <h3>{this.state.title}</h3>
         <p>{this.state.content}</p>
+        {/* show the Comments heading only if there are comments */}
+        {this.state.comments && this.state.comments.length > 0 && (
+          <h4>Comments</h4>
+        )}
+        {this.state.comments &&
+          this.state.comments.map((comment, index) => {
+            return (
+              <div key={index}>
+                <h5>{comment.title}</h5>
+                <p>{comment.content}</p>
+              </div>
+            );
+          })}
+        <div>{this.renderAddCommentForm()} </div>
         <Link to={"/threads"}>Back to Forum</Link>
       </div>
     );
