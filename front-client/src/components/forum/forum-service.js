@@ -13,9 +13,9 @@ class ForumService {
     return this.service.get("/threads").then(responseDB => responseDB.data);
   };
 
-  addNewThread = (title, content) => {
+  addNewThread = (title, content, creatorId) => {
     return this.service
-      .post("/thread/new", { title, content })
+      .post("/thread/new", { title, content, creatorId })
       .then(response => response.data);
   };
 
@@ -32,12 +32,11 @@ class ForumService {
   };
 
   getCommentDetail = commentId => {
-    console.log("service: ",commentId)
     return this.service
-    .post("/comment/details", { commentId })
-    .then(response => {
-      console.log("service response: ",response)
-        return response.data});
+      .post("/comment/details", { commentId })
+      .then(response => {
+        return response.data;
+      });
   };
 }
 

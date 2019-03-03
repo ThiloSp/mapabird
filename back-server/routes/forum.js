@@ -19,10 +19,10 @@ forumRoutes.post(
     // const imagePath = req.file.secure_url;
     // const imageName = req.file.originalname;
     Thread.create({
-      // creatorId: req.user._id,
       title: req.body.title,
       content: req.body.content,
-      comments: []
+      comments: [],
+      creatorId: req.body.creatorId
       // picPath: imagePath,
       // picName: imageName
     })

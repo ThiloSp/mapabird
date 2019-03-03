@@ -5,7 +5,7 @@ const threadSchema = new Schema(
   {
     title: String,
     content: String,
-    // creatorId: { type: Schema.Types.ObjectId, ref: "User" },
+    creatorId: { type: Schema.Types.ObjectId, ref: "User" },
     comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     // areas: { type: Schema.Types.ObjectId, ref: "Area" },
     // picPath: String,

@@ -12,8 +12,10 @@ export default class ThreadForm extends Component {
     event.preventDefault();
     const title = this.state.title;
     const content = this.state.content;
+    const creatorId = this.props.userInSession._id
+    // console.log("creatorId: ",creatorId)
     this.service
-      .addNewThread(title, content)
+      .addNewThread(title, content, creatorId)
       .then(() => {
         this.setState({
           title: "",

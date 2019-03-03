@@ -61,12 +61,10 @@ class App extends Component {
             render={() =>
               this.state.loggedInUser ? (
                 <Profile
-                  // getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
               ) : (
                 <Profile
-                  // getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
               )
