@@ -18,6 +18,12 @@ class ForumService {
       .post("/thread/new", { title, content })
       .then(response => response.data);
   };
+
+  getThreadDetails = (params) => {
+    return this.service
+      .get(`/threads/${params.id}`) //params ok?
+      .then(response => response.data);
+  };
 }
 
 export default ForumService;

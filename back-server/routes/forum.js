@@ -34,4 +34,15 @@ forumRoutes.post(
   }
 );
 
+forumRoutes.get("/threads/:id", (req, res, next) => {
+  Thread.findById(req.params.id)
+    // .populate('comments')
+    .then(thread => {
+      res.status(200).json(thread);
+    })
+    .catch(() => {
+      res.json({ message: "there was an error finding thread" });
+    });
+});
+
 module.exports = forumRoutes;
