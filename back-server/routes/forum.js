@@ -2,6 +2,7 @@ const express = require("express");
 const forumRoutes = express.Router();
 const Thread = require("../models/Thread");
 const Comment = require("../models/Comment")
+const User = require("../models/User")
 // const cloudinary = require("../options/cloudinary");
 const bodyParse = require("body-parser");
 
@@ -72,11 +73,22 @@ forumRoutes.post("/comment/new", (req, res, next) => {
 });
 
 forumRoutes.post('/comment/details', (req, res, next) => {
-  console.log("comment-details req.body: ",req.body)
+  // console.log("comment-details req.body: ",req.body)
   Comment.findById(req.body.commentId)
-  .then(theTask =>{
-      res.json(theTask);
-      console.log(theTask);
+  .then(theComment =>{
+      res.json(theComment);
+      // console.log(theComment);
+  })
+  .catch( err =>{
+      res.json(err);
+  })
+});
+
+forumRoutes.post('/comment/userinfo', (req, res, next) => {
+  console.log("comment-getUserInfo-details req.body: ",req.body)
+  User.findById(req.body.creatorId)
+  .then(theUser =>{
+      res.json(theUser);
   })
   .catch( err =>{
       res.json(err);

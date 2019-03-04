@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import ForumService from "./forum-service";
 
-export default class CommentDetail extends Component {
+export default class UserInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.service = new ForumService();
   }
 
-  getTheComment = () => {
-    const commentId = this.props.commentId;
+  getUserInfo = () => {
+    const creatorId = this.props.creator;
     this.service
-      .getCommentDetail(commentId)
+      .getUserInfo(creatorId)
       .then(responseFromApi => {
-        console.log("responseFromApi: ", responseFromApi);
+        console.log("creatorId: ", creatorId);
+        console.log("responseFromApi2: ", responseFromApi);
         this.setState(responseFromApi);
       })
       .catch(err => {
@@ -22,14 +23,14 @@ export default class CommentDetail extends Component {
   };
 
   componentDidMount() {
-    this.getTheComment();
+    this.getUserInfo();
   }
 
   render() {
     return (
       <div>
-        <h1>{this.state.title}</h1>
-        <p>{this.state.content}</p>
+        <img src={this.state.photoPath} alt="" />
+        <h1>{this.state.username}</h1>
       </div>
     );
   }

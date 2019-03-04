@@ -38,6 +38,14 @@ class ForumService {
         return response.data;
       });
   };
+
+  getUserInfo = creatorId => {
+    return this.service
+      .post("/comment/userinfo", { creatorId })
+      .then(response => {
+        return response.data;
+      });
+  };
 }
 
 export default ForumService;
