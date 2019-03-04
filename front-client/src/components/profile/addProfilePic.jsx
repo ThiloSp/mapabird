@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-/* import ProfileService from "./profile-service"; */
+import ProfileService from "./profile-service";
 
 export default class AddProfilePic extends Component {
- /*  constructor(props) {
+  constructor(props) {
     super(props);
     this.state = { loggedInUser: null };
     this.profileService = new ProfileService();
@@ -14,7 +14,7 @@ export default class AddProfilePic extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({ ...this.state, loggedInUser: nextProps["userInSession"] });
-  } */
+  }
 
   render() {
     return (

@@ -25,9 +25,9 @@ class ForumService {
       .then(response => response.data);
   };
 
-  addNewComment = (title, content, threadId) => {
+  addNewComment = (title, content, threadId, creatorId) => {
     return this.service
-      .post("/comment/new", { title, content, threadId })
+      .post("/comment/new", { title, content, threadId, creatorId })
       .then(response => response.data);
   };
 

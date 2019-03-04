@@ -5,7 +5,7 @@ const commentSchema = new Schema(
   {
     title: String,
     content: String,
-    // authorId: { type: Schema.Types.ObjectId, ref: "User" },
+    creatorId: { type: Schema.Types.ObjectId, ref: "User" },
     threadId: { type: Schema.Types.ObjectId, ref: "Thread" },
     imagePath: String,
     imageName: String

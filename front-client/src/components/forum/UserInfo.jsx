@@ -29,8 +29,8 @@ export default class UserInfo extends Component {
   render() {
     return (
       <div>
+        <h4>Comment by: {this.state.username}</h4>
         <img src={this.state.photoPath} alt="" />
-        <h1>{this.state.username}</h1>
       </div>
     );
   }

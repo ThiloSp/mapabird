@@ -13,8 +13,9 @@ export default class CommentForm extends Component {
     const title = this.state.title;
     const content = this.state.content;
     const threadId = this.props.theThread._id;
+    const creatorId = this.props.loggedInUser._id;
     this.service
-      .addNewComment(title, content, threadId)
+      .addNewComment(title, content, threadId, creatorId)
       .then(() => {
         this.props.getTheThread();
         this.setState({ title: "", content: "", isShowing: false });

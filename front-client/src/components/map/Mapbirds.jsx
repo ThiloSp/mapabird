@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import MapContainer from './Mapcontainer';
 import data from '../../data.json';
-import SearchForm from '../search/SearchForm';
+import SearchForm from './SearchForm';
 
 export default class Mapbirds extends Component {
   constructor(props) {

@@ -47,12 +47,38 @@ forumRoutes.get("/threads/:id", (req, res, next) => {
     });
 });
 
+// forumRoutes.post("/comment/new", (req, res, next) => {
+//   console.log("req.body: ",req.body)
+//   Comment.create({
+//     title: req.body.title,
+//     content: req.body.content,
+//     threadId: req.body.threadId
+//   })
+//     .then(response => {
+//       console.log("response: ",response)
+//       Thread.findByIdAndUpdate(req.body.threadId, {
+//         $push: { comments: response._id }
+//       })
+//         .then(theResponse => {
+//           console.log("theResponse: ",theResponse)
+//           res.json(theResponse);
+//         })
+//         .catch(err => {
+//           res.json(err);
+//         });
+//     })
+//     .catch(err => {
+//       res.json(err);
+//     });
+// });
+
 forumRoutes.post("/comment/new", (req, res, next) => {
   console.log("req.body: ",req.body)
   Comment.create({
     title: req.body.title,
     content: req.body.content,
-    threadId: req.body.threadId
+    threadId: req.body.threadId,
+    creatorId: req.body.creatorId
   })
     .then(response => {
       console.log("response: ",response)

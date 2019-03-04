@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ForumService from "./forum-service";
+import UserInfo from "./UserInfo";
 
 export default class CommentDetail extends Component {
   constructor(props) {
@@ -28,6 +29,11 @@ export default class CommentDetail extends Component {
   render() {
     return (
       <div>
+        {this.state.creatorId ? (
+          <UserInfo creator={this.state.creatorId} />
+        ) : (
+          undefined
+        )}
         <h1>{this.state.title}</h1>
         <p>{this.state.content}</p>
       </div>
