@@ -22,8 +22,8 @@ class Profile extends Component {
 
   handleFileUpload = e => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
-    console.log("user ID: ", this.state.loggedInUser._id)
-    // const userID = this.state.loggedInUser._id;
+    console.log("user ID: ", this.state.loggedInUser._id);
+    const userID = this.state.loggedInUser._id;
     const uploadData = new FormData();
     uploadData.append("photoPath", e.target.files[0]);
     this.profileService
@@ -35,23 +35,16 @@ class Profile extends Component {
           loggedInUser: { photoPath: response.secure_url } // man sieht Foto, es wird aber nicht gespeichert. Muss iregndwie in die Datenbank rein. Eventuell mit handleSubmit in Kommentar
         });
         console.log(this.state);
+        this.profileService
+          .updatePhotoProfile(response, userID)
+          .then(response => {
+            console.log(response);
+          });
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);
       });
   };
-
- /*  handleSubmit = e => {
-    e.preventDefault();
-    this.profileService
-      .savePhoto(this.state)
-      .then(res => {
-        console.log("added: ", res);
-      })
-      .catch(err => {
-        console.log("Error while adding the photo: ", err);
-      });
-  }; */
 
   render() {
     if (this.state.loggedInUser) {
@@ -59,7 +52,6 @@ class Profile extends Component {
         <div>
           <h2>Welcome, {this.state.loggedInUser.username}!</h2>
           <img src={this.state.loggedInUser.photoPath} alt="" />
-          {/* <AddProfilePic userInSession={this.state.loggedInUser} /> */}
           <AddProfilePic
             userInSession={this.state.loggedInUser}
             handleChange={this.handleFileUpload}

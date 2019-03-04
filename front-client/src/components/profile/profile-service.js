@@ -15,6 +15,12 @@ class ProfileService {
     .then(res => res.data);
   }
 
+  updatePhotoProfile = (response, userID) => {
+    console.log("this is photo: ",response, userID)
+    return this.service.post("/update", { response, userID })
+    .then(res => res.data)
+  }
+
   // updatePhotoProfile = photo => {
   //   return this.loggedin().then(user => {
   //     user.imageUrl = photo.imageUrl;
