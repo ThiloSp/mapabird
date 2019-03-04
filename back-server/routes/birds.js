@@ -1,36 +1,33 @@
 const express = require("express");
 const birdRoutes = express.Router();
+const BirdSearch = require("../models/BirdSearch");
 const axios = require("axios");
 
 birdRoutes.get("/", (req, res, next) => {
-  let birdArray = [];
   function getData() {
-    for (let i = 0; i < 2; i++) {
-      const service = axios.create({
-        // method: "get",
+    for (let i = 1; i <= 31; i++) {
+      let service = axios.create({
         baseURL: `https://ebird.org/ws2.0/data/obs/ES/historic/1995/1/${i}?rank=mrec&detail=full&cat=species`,
         // responseType:'stream'
         headers: {
-          // 'X-eBirdApiToken': 'on81na84d12p'
           "X-eBirdApiToken": process.env.eBirdAPIKey
         }
-      })
-
-      service.get()
+      });
+      service
+        .get()
         .then(answer => {
-          birdArray.push(...answer.data);
-          // console.log("birdArray: ", birdArray[0].data[0]);
-          console.log(birdArray);
-          return res.status(200).json(answer.data)
+          console.log("answer.data: ",answer.data);
+          return answer.data;
         })
+        .then(data => BirdSearch.create(data))
+        .then(data => res.status(200).json(data))
+
         .catch(err => {
-          return res.status(500).json(err)
-          // console.log('----------',"there was an error", err);
+          return res.status(500).json(err);
         });
-      }
+    }
   }
   getData();
-  // Promise.all([getData()]).then(console.log(birdArray))
 });
 
 module.exports = birdRoutes;
