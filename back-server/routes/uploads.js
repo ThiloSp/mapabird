@@ -4,7 +4,8 @@ const uploader = require('../configs/cloudinary-setup');
 
 uploads.post('/upload', uploader.single("photoPath"), (req, res, next) => {
     console.log('file is: ', req.file)
-
+    console.log('URL is: ', req.file.secure_url)
+    console.log('userID: ', req.body)
     if (!req.file) {
       next(new Error('No file uploaded!'));
       return;
@@ -14,6 +15,14 @@ uploads.post('/upload', uploader.single("photoPath"), (req, res, next) => {
     res.json({ secure_url: req.file.secure_url });
 })
 
-
+// router.post('/update', (req, res, next) => {
+//   if (req.isAuthenticated()) {
+//     const imageUrl = req.body.imageUrl;
+//     User.findOneAndUpdate({_id: req.user._id}, { $set: { imageUrl: imageUrl }}, {new:true})
+//       .then((updateUser) => {
+//         res.status(200).json(updateUser);
+//       });
+//   }
+// });
 
 module.exports = uploads;

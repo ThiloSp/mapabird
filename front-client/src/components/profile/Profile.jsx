@@ -22,6 +22,8 @@ class Profile extends Component {
 
   handleFileUpload = e => {
     console.log("The file to be uploaded is: ", e.target.files[0]);
+    console.log("user ID: ", this.state.loggedInUser._id)
+    // const userID = this.state.loggedInUser._id;
     const uploadData = new FormData();
     uploadData.append("photoPath", e.target.files[0]);
     this.profileService

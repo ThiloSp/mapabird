@@ -14,12 +14,14 @@ class ProfileService {
     return this.service.post("/upload", theFile) //put?
     .then(res => res.data);
   }
-/* 
-  savePhoto(newPhoto) {
-    console.log('new photo is: ', newPhoto)
-    return this.service.post("/upload/save", newPhoto)
-    .then(res => res.data);
-  } */
+
+  // updatePhotoProfile = photo => {
+  //   return this.loggedin().then(user => {
+  //     user.imageUrl = photo.imageUrl;
+  //     return this.service.post("/update", user)
+  //     .then(res => res.data)
+  //   })
+  // }
 }
 
 export default ProfileService;

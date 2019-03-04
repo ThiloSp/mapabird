@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MapContainer from './Mapcontainer';
 import data from '../../data.json';
+import SearchBar from './SearchBar';
 import SearchForm from './SearchForm';
 
 export default class Mapbirds extends Component {
@@ -26,7 +27,8 @@ export default class Mapbirds extends Component {
     return (
       <div>
         <h2>This is Map Birds</h2>
-        <SearchForm searchFunction={this.handlerFunction} />
+        <SearchForm />
+        {/* <SearchBar searchFunction={this.handlerFunction} /> */}
         <MapContainer allBirdPointsProps={this.state.allBirdPoints}  />
       </div>
     )
