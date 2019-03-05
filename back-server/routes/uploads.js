@@ -16,7 +16,7 @@ uploads.post("/upload", uploader.single("photoPath"), (req, res, next) => {
   res.json({ secure_url: req.file.secure_url });
 });
 
-uploads.post("/update", (req, res, next) => {
+uploads.put("/update", (req, res, next) => {
   console.log("this is req.body: ",req.body)
   const photoPath = req.body.response.secure_url;
   const userId = req.body.userID;
