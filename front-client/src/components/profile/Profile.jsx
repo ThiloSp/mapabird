@@ -32,7 +32,7 @@ class Profile extends Component {
         console.log("response is: ", response);
         this.setState({
           ...this.state,
-          loggedInUser: { photoPath: response.secure_url } // man sieht Foto, es wird aber nicht gespeichert. Muss iregndwie in die Datenbank rein. Eventuell mit handleSubmit in Kommentar
+          loggedInUser: { photoPath: response.secure_url } 
         });
         console.log(this.state);
         this.profileService

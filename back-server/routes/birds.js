@@ -5,9 +5,10 @@ const axios = require("axios");
 
 birdRoutes.post("/", (req, res, next) => {
   // console.log("req.body.searchName: ",req.body.searchName)
+  const searchNameConst = req.body.searchName;
+  const species = req.body.species;
   const month = req.body.month;
   const year = req.body.year;
-  const searchNameConst = req.body.searchName;
   function getData() {
     for (let i = 1; i <= 1; i++) {
       let service = axios.create({
@@ -23,19 +24,25 @@ birdRoutes.post("/", (req, res, next) => {
           // console.log("answer.data: ",answer.data);
           return answer.data;
         })
-        // .then(data => {
-        //   console.log("this is data: ",data)
-        //   BirdSearch.create(data)
-        // })
         .then(data => {
-          console.log("this is data: ", data);
-          for (let i = 0; i < data.length; i++) {
-            data[i].searchName = searchNameConst;
-            BirdSearch.create(data);
+          // console.log("this is data: ", data);
+          var dataFiltered = data.filter(oneData => {
+            return oneData.sciName === species;
+          });
+          // console.log("this is dataFiltered", dataFiltered);
+          const promiseArray = [];
+          for (let i = 0; i < dataFiltered.length; i++) {
+            dataFiltered[i].searchName = searchNameConst;
+            promiseArray.push(BirdSearch.create(dataFiltered));
           }
+          return Promise.all(promiseArray).then(data => data);
         })
-        .then(data => res.status(200).json(data))
-
+        .then(data => {
+          const xArray = [];
+          data.forEach(e => xArray.push(...e));
+          // console.log("data to send back",data)
+          return res.status(200).json(xArray);
+        })
         .catch(err => {
           return res.status(500).json(err);
         });

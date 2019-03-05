@@ -13,11 +13,11 @@ class MapService {
   //   return this.service.get("/threads").then(responseDB => responseDB.data);
   // };
 
-  addNewSearch = (searchName, month, year) => {
+  addNewSearch = (searchName, species, month, year) => {
     console.log("This is searchname: ",searchName)
     console.log("This is month: ", month)
     return this.service
-      .post("/", { searchName, month, year })
+      .post("/", { searchName, species, month, year })
       .then(response => response.data);
   };
 
