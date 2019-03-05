@@ -12,16 +12,54 @@ birdRoutes.post("/", (req, res, next) => {
 
   function getData() {
     const reqArray = [];
-    for (let i = 1; i <= 31; i++) {
-      let service = axios.create({
-        baseURL: `https://ebird.org/ws2.0/data/obs/ES/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
-        // responseType:'stream'
-        headers: {
-          "X-eBirdApiToken": process.env.eBirdAPIKey
-        }
-      });
-      reqArray.push(service.get());
+
+    if (month === 4 || 6 || 9 || 11) {
+      for (let i = 1; i <= 30; i++) {
+        let service = axios.create({
+          baseURL: `https://ebird.org/ws2.0/data/obs/GB/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
+          // responseType:'stream'
+          headers: {
+            "X-eBirdApiToken": process.env.eBirdAPIKey
+          }
+        });
+        reqArray.push(service.get());
+      }
+    } else if (month === 1 || 3 || 5 || 7 || 8 || 10 || 12)/* (month === 4 || 6 || 9 || 11) */ {
+      for (let i = 1; i <= 31; i++) {
+        let service = axios.create({
+          baseURL: `https://ebird.org/ws2.0/data/obs/GB/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
+          // responseType:'stream'
+          headers: {
+            "X-eBirdApiToken": process.env.eBirdAPIKey
+          }
+        });
+        reqArray.push(service.get());
+      }
+    } else {
+      for (let i = 1; i <= 28; i++) {
+        let service = axios.create({
+          baseURL: `https://ebird.org/ws2.0/data/obs/GB/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
+          // responseType:'stream'
+          headers: {
+            "X-eBirdApiToken": process.env.eBirdAPIKey
+          }
+        });
+        reqArray.push(service.get());
+      }
     }
+
+    // function getData() {
+    //   const reqArray = [];
+    //   for (let i = 1; i <= 31; i++) {
+    //     let service = axios.create({
+    //       baseURL: `https://ebird.org/ws2.0/data/obs/ES/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
+    //       // responseType:'stream'
+    //       headers: {
+    //         "X-eBirdApiToken": process.env.eBirdAPIKey
+    //       }
+    //     });
+    //     reqArray.push(service.get());
+    //   }
 
     Promise.all(reqArray)
       .then(answer => {
@@ -59,8 +97,8 @@ birdRoutes.post("/", (req, res, next) => {
 birdRoutes.post("/threadbirds", (req, res, next) => {
   console.log("req.body: ", req.body);
   BirdSearch.find({ searchName: req.body.searchName }).then(birds => {
-    console.log("this is birds: ",birds.data)
-    console.log("this is birds.length: ",birds.length)
+    console.log("this is birds: ", birds.data);
+    console.log("this is birds.length: ", birds.length);
     res.json(birds);
   });
 });
