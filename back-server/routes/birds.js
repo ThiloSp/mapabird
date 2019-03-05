@@ -9,8 +9,10 @@ birdRoutes.post("/", (req, res, next) => {
   const species = req.body.species;
   const month = req.body.month;
   const year = req.body.year;
+
   function getData() {
-    for (let i = 1; i <= 1; i++) {
+    const reqArray = [];
+    for (let i = 1; i <= 31; i++) {
       let service = axios.create({
         baseURL: `https://ebird.org/ws2.0/data/obs/ES/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
         // responseType:'stream'
@@ -18,37 +20,49 @@ birdRoutes.post("/", (req, res, next) => {
           "X-eBirdApiToken": process.env.eBirdAPIKey
         }
       });
-      service
-        .get()
-        .then(answer => {
-          // console.log("answer.data: ",answer.data);
-          return answer.data;
-        })
-        .then(data => {
-          // console.log("this is data: ", data);
-          var dataFiltered = data.filter(oneData => {
-            return oneData.sciName === species;
-          });
-          // console.log("this is dataFiltered", dataFiltered);
-          const promiseArray = [];
-          for (let i = 0; i < dataFiltered.length; i++) {
-            dataFiltered[i].searchName = searchNameConst;
-            promiseArray.push(BirdSearch.create(dataFiltered));
-          }
-          return Promise.all(promiseArray).then(data => data);
-        })
-        .then(data => {
-          const xArray = [];
-          data.forEach(e => xArray.push(...e));
-          // console.log("data to send back",data)
-          return res.status(200).json(xArray);
-        })
-        .catch(err => {
-          return res.status(500).json(err);
-        });
+      reqArray.push(service.get());
     }
+
+    Promise.all(reqArray)
+      .then(answer => {
+        const array = [];
+        answer.forEach(e => array.push(...e.data));
+        // console.log("answer.data: ",answer.data);
+        return array;
+      })
+      .then(data => {
+        // console.log("this is data: ", data);
+        var dataFiltered = data.filter(oneData => {
+          return oneData.sciName === species;
+        });
+        // console.log("this is dataFiltered", dataFiltered);
+        let promiseArray = [];
+        for (let k = 0; k < dataFiltered.length; k++) {
+          dataFiltered[k].searchName = searchNameConst;
+        }
+        promiseArray.push(BirdSearch.create(dataFiltered));
+        return Promise.all(promiseArray).then(data => data);
+      })
+      .then(data => {
+        const xArray = [];
+        data.forEach(e => xArray.push(...e));
+        // console.log("data to send back",data)
+        return res.status(200).json(xArray);
+      })
+      .catch(err => {
+        return res.status(500).json(err);
+      });
   }
   getData();
+});
+
+birdRoutes.post("/threadbirds", (req, res, next) => {
+  console.log("req.body: ", req.body);
+  BirdSearch.find({ searchName: req.body.searchName }).then(birds => {
+    console.log("this is birds: ",birds.data)
+    console.log("this is birds.length: ",birds.length)
+    res.json(birds);
+  });
 });
 
 module.exports = birdRoutes;

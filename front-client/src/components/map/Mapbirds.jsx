@@ -17,22 +17,11 @@ export default class Mapbirds extends Component {
     this.setState(newState);
   };
 
-  /* handlerFunction = (query) => {
-    let newState = {
-      ...this.state
-    };
-    newState.allBirdPoints = this.state.allBirdPoints.filter(birdPoint => {
-      return birdPoint.sciName.toLowerCase().startsWith(query.toLowerCase());
-    });
-    this.setState(newState);
-  }; */
-
   render() {
     return (
       <div>
         <h2>This is Map Birds</h2>
         <SearchForm passFunction={this.handlerFunction} />
-        {/* <SearchBar searchFunction={this.handlerFunction} /> */}
         <MapContainer allBirdPointsProps={this.state.allBirdPoints} />
       </div>
     );

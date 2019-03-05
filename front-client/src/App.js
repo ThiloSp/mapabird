@@ -52,19 +52,19 @@ class App extends Component {
         />
         <Switch>
           <Route exact path="/mapbirds" component={Mapbirds} />
-          <Route exact path="/threads" component={ThreadListAll} />
           {/* <Route exact path="/threads/:id" component={ThreadDetails} /> */}
           <Route
             exact
             path="/threads/:id"
             render={({match}) =>
-              this.state.loggedInUser ? (
-                <ThreadDetails userInSession={this.state.loggedInUser} match={match} />
+            this.state.loggedInUser ? (
+              <ThreadDetails userInSession={this.state.loggedInUser} match={match} />
               ) : (
                 <ThreadDetails userInSession={this.state.loggedInUser} match={match} />
-              )
-            }
+                )
+              }
           />
+              <Route exact path="/threads" component={ThreadListAll} />
 
           <Route exact path="/" component={Home} />
           <Route

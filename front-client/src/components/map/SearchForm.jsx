@@ -9,7 +9,7 @@ export default class SearchForm extends Component {
   }
 
   handleFormSubmit = event => {
-    console.log("state is now1: ", this.state);
+    // console.log("state is now1: ", this.state);
     event.preventDefault();
     const searchName = this.state.searchName;
     const species = this.state.species;
@@ -19,7 +19,7 @@ export default class SearchForm extends Component {
     this.service
       .addNewSearch(searchName, species, month, year)
       .then(response => {
-        console.log("searchresponse is: ", response);
+        // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
       })
       .then(() => {
@@ -68,6 +68,7 @@ export default class SearchForm extends Component {
               value={this.state.month}
               onChange={e => this.handleChange(e)}
             />
+
             <label>Year:</label>
             <input
               type="text"
@@ -85,7 +86,7 @@ export default class SearchForm extends Component {
 
 // <select
 //   multiple={true}
-//   value={this.state.month}
+//   value={this.state.vale}
 //   onChange={this.handleChange}
 // >
 //   <option value="grapefruit">Grapefruit</option>

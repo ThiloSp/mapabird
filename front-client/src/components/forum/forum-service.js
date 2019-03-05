@@ -13,9 +13,9 @@ class ForumService {
     return this.service.get("/threads").then(responseDB => responseDB.data);
   };
 
-  addNewThread = (title, content, creatorId) => {
+  addNewThread = (title, content, creatorId, searchName) => {
     return this.service
-      .post("/thread/new", { title, content, creatorId })
+      .post("/thread/new", { title, content, creatorId, searchName })
       .then(response => response.data);
   };
 

@@ -23,7 +23,8 @@ forumRoutes.post(
       title: req.body.title,
       content: req.body.content,
       comments: [],
-      creatorId: req.body.creatorId
+      creatorId: req.body.creatorId,
+      searchName: req.body.searchName
       // picPath: imagePath,
       // picName: imageName
     })

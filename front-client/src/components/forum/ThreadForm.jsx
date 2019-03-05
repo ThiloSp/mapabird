@@ -4,22 +4,24 @@ import ForumService from "./forum-service";
 export default class ThreadForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", content: "" };
+    this.state = { title: "", content: "", searchName: "" };
     this.service = new ForumService();
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
     const title = this.state.title;
+    const searchName = this.state.searchName;
     const content = this.state.content;
     const creatorId = this.props.userInSession._id
     // console.log("creatorId: ",creatorId)
     this.service
-      .addNewThread(title, content, creatorId)
+      .addNewThread(title, content, creatorId, searchName)
       .then(() => {
         this.setState({
           title: "",
-          content: ""
+          content: "",
+          searchName: "" 
         });
       })
       .catch(error => console.log(error));
@@ -42,6 +44,13 @@ export default class ThreadForm extends Component {
             type="text"
             name="title"
             value={this.state.title}
+            onChange={e => this.handleChange(e)}
+          />
+          <label>Search you want to show:</label>
+          <input
+            type="text"
+            name="searchName"
+            value={this.state.searchName}
             onChange={e => this.handleChange(e)}
           />
           <label>Content:</label>
