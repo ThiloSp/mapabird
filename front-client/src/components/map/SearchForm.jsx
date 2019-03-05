@@ -47,16 +47,12 @@ export default class SearchForm extends Component {
               onChange={e => this.handleChange(e)}
             />
             <label>Month:</label>
-            <select
-              multiple={true}
+            <input
+              type="text"
+              name="month"
               value={this.state.month}
-              onChange={this.handleChange}
-            >
-              <option value="grapefruit">Grapefruit</option>
-              <option value="lime">Lime</option>
-              <option value="coconut">Coconut</option>
-              <option value="mango">Mango</option>
-            </select>
+              onChange={e => this.handleChange(e)}
+            />
             <label>Year:</label>
             <input
               type="text"
@@ -72,11 +68,13 @@ export default class SearchForm extends Component {
   }
 }
 
-{
-  /* <input
-  type="text"
-  name="month"
-  value={this.state.month}
-  onChange={e => this.handleChange(e)}
-/> */
-}
+// <select
+//   multiple={true}
+//   value={this.state.month}
+//   onChange={this.handleChange}
+// >
+//   <option value="grapefruit">Grapefruit</option>
+//   <option value="lime">Lime</option>
+//   <option value="coconut">Coconut</option>
+//   <option value="mango">Mango</option>
+// </select>

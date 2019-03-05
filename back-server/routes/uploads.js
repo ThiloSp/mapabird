@@ -31,14 +31,4 @@ uploads.put("/update", (req, res, next) => {
   });
 });
 
-// router.post('/update', (req, res, next) => {
-//   if (req.isAuthenticated()) {
-//     const imageUrl = req.body.imageUrl;
-//     User.findOneAndUpdate({_id: req.user._id}, { $set: { imageUrl: imageUrl }}, {new:true})
-//       .then((updateUser) => {
-//         res.status(200).json(updateUser);
-//       });
-//   }
-// });
-
 module.exports = uploads;
