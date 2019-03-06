@@ -14,51 +14,7 @@ birdRoutes.post("/", (req, res, next) => {
     const reqArray = [];
     const countries = [ "ES", "PT" ];
 /* "AD", "AT", "BE", "CH", "CZ", "DK", "EE",  "ES", "PT", "NO", "SE", "SI", "DE", "FI", "FO",  "FR", "GB", "IT", "LU", "NL" */
-    // countries.forEach(country => {
-    //   if (month === "April" || "June" || "September" || "November") {
-    //     for (let i = 1; i <= 30; i++) {
-    //       let service = axios.create({
-    //         baseURL: `https://ebird.org/ws2.0/data/obs/${country}/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
-    //         // responseType:'stream'
-    //         headers: {
-    //           "X-eBirdApiToken": process.env.eBirdAPIKey
-    //         }
-    //       });
-    //       reqArray.push(service.get());
-    //     }
-    //   } else if (
-    //     month === "January" ||
-    //     "March" ||
-    //     "May" ||
-    //     "July" ||
-    //     "August" ||
-    //     "October" ||
-    //     "December"
-    //   ) {
-    //     /* (month === 4 || 6 || 9 || 11) */ for (let i = 1; i <= 31; i++) {
-    //       let service = axios.create({
-    //         baseURL: `https://ebird.org/ws2.0/data/obs/${country}/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
-    //         // responseType:'stream'
-    //         headers: {
-    //           "X-eBirdApiToken": process.env.eBirdAPIKey
-    //         }
-    //       });
-    //       reqArray.push(service.get());
-    //     }
-    //   } else {
-    //     for (let i = 1; i <= 28; i++) {
-    //       let service = axios.create({
-    //         baseURL: `https://ebird.org/ws2.0/data/obs/${country}/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
-    //         // responseType:'stream'
-    //         headers: {
-    //           "X-eBirdApiToken": process.env.eBirdAPIKey
-    //         }
-    //       });
-    //       reqArray.push(service.get());
-    //     }
-    //   }
-    // });
-
+    
     countries.forEach(country => {
       if (month === 4 || 6 || 9 || 11) {
         for (let i = 1; i <= 30; i++) {
@@ -130,10 +86,9 @@ birdRoutes.post("/", (req, res, next) => {
 });
 
 birdRoutes.post("/threadbirds", (req, res, next) => {
-  console.log("req.body: ", req.body);
+  // console.log("req.body: ", req.body);
   BirdSearch.find({ searchName: req.body.searchName }).then(birds => {
-    console.log("this is birds: ", birds.data);
-    console.log("this is birds.length: ", birds.length);
+    // console.log("this is birds: ", birds.data);
     res.json(birds);
   });
 });

@@ -55,19 +55,23 @@ export default class ThreadDetails extends Component {
         <h2>This is ThreadDetails</h2>
         <h3>{this.state.title}</h3>
         <p>{this.state.content}</p>
-        {this.state.searchName ? (
-          <div>
-            <MapForThreads searchName={this.state.searchName} />
-          </div>
-        ) : (
-          undefined
-        )}
+        <div>
+          {this.state.searchName ? (
+            <div>
+              <MapForThreads searchName={this.state.searchName} />
+            </div>
+          ) : (
+            undefined
+          )}
+        </div>
         {/* first constructor, second render, third componentDidMount, dann wegen stateWechsel wieder render. Da diese Daten aus dem componentDidMount kommen muss ich im render sicherstellen, dass creatorId schon vorhanden ist, bevor die Props gesendet werden. beim ersten render ist this.state.creatorId noch nicht da, also tritt im ternario undefined ein, was bedeutet, dass er gar nichts macht. beim zweiten render sind die Daten dann da und die Props werden geschickt. */}
-        {this.state.creatorId ? (
-          <UserInfo creator={this.state.creatorId} />
-        ) : (
-          undefined
-        )}
+        <div>
+          {this.state.creatorId ? (
+            <UserInfo creator={this.state.creatorId} />
+          ) : (
+            undefined
+          )}
+        </div>
         {/* show the Comments heading only if there are comments */}
         {this.state.comments && this.state.comments.length > 0 && (
           <h4>Comments</h4>
