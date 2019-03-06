@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MapContainer } from "./Mapcontainer";
+import  MapContainer  from "./Mapcontainer";
 import MapService from "./map-service";
 import data from "../../data.json";
 

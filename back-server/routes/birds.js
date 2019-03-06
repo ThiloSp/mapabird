@@ -12,19 +12,8 @@ birdRoutes.post("/", (req, res, next) => {
 
   function getData() {
     const reqArray = [];
-    const countries = [
-      /* "AD", "AT",  "BE",
-      "CH",
-      "CZ", "DK", "EE",  */ "ES",
-      "PT" /* "NO", "SE", "SI" */
-      /* "DE",
-       "FI", "FO",  "FR",
-      "GB",
-      "IT",
-      "LU", "NL",
-       */
-    ];
-
+    const countries = [ "ES", "PT" ];
+/* "AD", "AT", "BE", "CH", "CZ", "DK", "EE",  "ES", "PT", "NO", "SE", "SI", "DE", "FI", "FO",  "FR", "GB", "IT", "LU", "NL" */
     // countries.forEach(country => {
     //   if (month === "April" || "June" || "September" || "November") {
     //     for (let i = 1; i <= 30; i++) {

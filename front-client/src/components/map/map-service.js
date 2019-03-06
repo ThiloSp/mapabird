@@ -16,6 +16,7 @@ class MapService {
   addNewSearch = (searchName, species, month, year) => {
     console.log("This is searchname: ", searchName);
     console.log("This is month: ", month);
+    console.log("This is year: ", year);
     return this.service
       .post("/", { searchName, species, month, year })
       .then(response => response.data);
