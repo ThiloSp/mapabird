@@ -17,33 +17,25 @@ forumRoutes.post("/personalthreads", (req, res, next) => {
   console.log("This is user.id: ", req.body);
   Thread.find({ creatorId: req.body.userId }).then(threads => {
     res.json({ threads });
-    console.log("this is personal threads: ",threads);
+    console.log("this is personal threads: ", threads);
   });
 });
 
-forumRoutes.post(
-  "/thread/new",
-  // cloudinary.single("photo"),
-  (req, res, next) => {
-    // const imagePath = req.file.secure_url;
-    // const imageName = req.file.originalname;
-    Thread.create({
-      title: req.body.title,
-      content: req.body.content,
-      comments: [],
-      creatorId: req.body.creatorId,
-      searchName: req.body.searchName
-      // picPath: imagePath,
-      // picName: imageName
+forumRoutes.post("/thread/new", (req, res, next) => {
+  Thread.create({
+    title: req.body.title,
+    content: req.body.content,
+    comments: [],
+    creatorId: req.body.creatorId,
+    searchName: req.body.searchName
+  })
+    .then(thread => {
+      res.json(thread);
     })
-      .then(thread => {
-        res.json(thread);
-      })
-      .catch(() => {
-        res.json({ message: "there was an error saving thread" });
-      });
-  }
-);
+    .catch(() => {
+      res.json({ message: "there was an error saving thread" });
+    });
+});
 
 forumRoutes.get("/threads/:id", (req, res, next) => {
   Thread.findById(req.params.id)

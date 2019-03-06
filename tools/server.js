@@ -3,8 +3,8 @@ const DBURL = "mongodb://localhost/mapabird"
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var start = new Date("2016/1/1"),
-    end = new Date("2016/12/31"),
+var start = new Date("2013/1/1"),
+    end = new Date("2013/12/31"),
     year = start.getFullYear(),
     month = start.getMonth()
 day = start.getDate(),

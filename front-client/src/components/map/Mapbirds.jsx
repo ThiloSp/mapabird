@@ -21,7 +21,7 @@ export default class Mapbirds extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { allBirdPoints: data };
+    this.state = { allBirdPoints: [] };
   }
 
   handlerFunction = dataFromForm => {

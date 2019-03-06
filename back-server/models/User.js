@@ -8,7 +8,6 @@ const UserSchema = new Schema(
     photoPath: { type: String, default: '../../images/user.png' },
     photoName: String,
     threads: [{ type: Schema.Types.ObjectId, ref: "Thread" }],
-    areas: [{ type: Schema.Types.ObjectId, ref: "Area" }],
   },
   {
     timestamps: {
