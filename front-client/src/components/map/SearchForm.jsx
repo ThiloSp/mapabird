@@ -15,11 +15,12 @@ export default class SearchForm extends Component {
     const species = this.state.species;
     const month = this.state.month;
     const year = this.state.year;
+    const search = "search1"
 
     this.service
-      .addNewSearch(searchName, species, month, year)
+      .addNewSearch(searchName, species, month, year, search)
       .then(response => {
-        // console.log("searchresponse is: ", response);
+        console.log("searchresponse is: ", response);
         this.props.passFunction(response);
       })
       .then(() => {
@@ -27,7 +28,8 @@ export default class SearchForm extends Component {
           searchName: "",
           species: "",
           month: "",
-          year: ""
+          year: "",
+          search: ""
         });
         console.log("state is now2: ", this.state);
       })

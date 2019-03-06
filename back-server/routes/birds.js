@@ -52,6 +52,7 @@ birdRoutes.post("/", (req, res, next) => {
           reqArray.push(service.get());
         }
       }
+      console.log("This is reqArray: ",reqArray)
     });
 
     Promise.all(reqArray)
@@ -96,4 +97,16 @@ birdRoutes.post("/threadbirds", (req, res, next) => {
   });
 });
 
+
 module.exports = birdRoutes;
+
+
+// birdRoutes.get("/differentBirdNames/:day/:month/:year", (req, res) => {
+//   let service = axios.create({
+//     baseURL: `https://ebird.org/ws2.0/data/obs/${country}/historic/${year}/${month}/${i}?rank=mrec&detail=full&cat=species`,
+//     // responseType:'stream'
+//     headers: {
+//       "X-eBirdApiToken": process.env.eBirdAPIKey
+//     }
+//   });
+// })
