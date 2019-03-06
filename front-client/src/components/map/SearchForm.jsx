@@ -4,7 +4,7 @@ import MapService from "./map-service";
 export default class SearchForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchName: "", species: "", month: "", year: "" };
+    this.state = { searchName: "", species: "", month: "", year: "", search: "" };
     this.service = new MapService();
   }
 

@@ -4,24 +4,30 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 export class MapContainer extends Component {
   render() {
     const styleMap = {
-      width: '100%',
-      height: '50%'
-    }
+      width: "100%",
+      height: "50%"
+    };
 
     const markers = this.props.allBirdPointsProps.map((point, idx) => {
-      let image = {
-        url: "/images/testMarker.png",
-       /*  strokeColor: "red", */
-        scaledSize: new this.props.google.maps.Size (64,64)
-    }
-      return <Marker position={point} key={idx} icon={image}/>;
+      let image = {};
+      if (point.search === "search1") {
+        image = {
+          url: "/images/markerBlue.png",
+          scaledSize: new this.props.google.maps.Size(64, 64)
+        };
+      } else {
+        image = {
+          url: "/images/markerRed.png",
+          scaledSize: new this.props.google.maps.Size(64, 64)
+        };
+      }
+      return <Marker position={point} key={idx} icon={image} />;
     });
 
     return (
-      
       <Map
         google={this.props.google}
-        style = {styleMap}
+        style={styleMap}
         zoom={5.5}
         initialCenter={{
           lat: 40.4893538,

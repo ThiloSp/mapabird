@@ -84,12 +84,10 @@ class App extends Component {
             render={() =>
               this.state.loggedInUser ? (
                 <ThreadForm
-                  // getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
               ) : (
                 <ThreadForm
-                  // getUser={this.getTheUser}
                   userInSession={this.state.loggedInUser}
                 />
               )

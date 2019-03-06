@@ -13,6 +13,12 @@ class ForumService {
     return this.service.get("/threads").then(responseDB => responseDB.data);
   };
 
+  getPersonalThreads = userId => {
+    return this.service
+      .post("/personalthreads", { userId })
+      .then(responseDB => responseDB.data);
+  };
+
   addNewThread = (title, content, creatorId, searchName) => {
     return this.service
       .post("/thread/new", { title, content, creatorId, searchName })

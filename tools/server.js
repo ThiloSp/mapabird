@@ -3,6 +3,13 @@ const DBURL = "mongodb://localhost/mapabird"
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+var start = new Date("2016/1/1"),
+    end = new Date("2016/12/31"),
+    year = start.getFullYear(),
+    month = start.getMonth()
+day = start.getDate(),
+    dates = [start];
+
 mongoose.Promise = Promise;
 mongoose
     .connect(DBURL)
@@ -31,25 +38,35 @@ function requestDay(day, month, year, country) {
 
     service.get("").then((bird) => {
         console.log(`Retrieving day ${day} ${month} ${year}`)
+        var totalElements = bird.data.length
+        var cElem = 0
+
         bird.data.forEach((b) => {
             var bb = new Bird(b)
-            
-            bb.save()
+
+            bb.save(function () {
+                cElem++
+
+                if (cElem === totalElements) {
+                    var newDate = dates.shift()
+
+                    if (newDate !== undefined) {
+                        requestDay(newDate.getDate(), newDate.getMonth() + 1, newDate.getFullYear(), "ES")
+                    } else {
+                        console.log("no more days to check!")
+                        process.exit(0)
+                    }
+                }
+            })
         })
     })
 }
 
-var start = new Date("2018/1/1"),
-    end = new Date("2018/12/31"),
-    year = start.getFullYear(),
-    month = start.getMonth()
-    day = start.getDate(),
-    dates = [start];
 
-while(dates[dates.length-1] < end) {
-  dates.push(new Date(year, month, ++day));
+
+while (dates[dates.length - 1] < end) {
+    dates.push(new Date(year, month, ++day));
 }
 
-dates.forEach((day) =>{
-    requestDay(day.getDate(), day.getMonth() + 1, day.getFullYear(), "ES")
-})
+
+requestDay(dates[0].getDate(), dates[0].getMonth() + 1, dates[0].getFullYear(), "ES")
