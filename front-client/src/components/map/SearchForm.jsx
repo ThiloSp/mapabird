@@ -61,13 +61,27 @@ export default class SearchForm extends Component {
               value={this.state.species}
               onChange={e => this.handleChange(e)}
             />
+
             <label>Month:</label>
-            <input
-              type="text"
+            <select
               name="month"
               value={this.state.month}
               onChange={e => this.handleChange(e)}
-            />
+            >
+              <option value="0">select</option>
+              <option value="1">January</option>
+              <option value="2">February</option>
+              <option value="3">March</option>
+              <option value="4">April</option>
+              <option value="5">May</option>
+              <option value="6">June</option>
+              <option value="7">July</option>
+              <option value="8">August</option>
+              <option value="9">September</option>
+              <option value="10">October</option>
+              <option value="11">November</option>
+              <option value="12">JDecember</option>
+            </select>
 
             <label>Year:</label>
             <input
@@ -84,13 +98,34 @@ export default class SearchForm extends Component {
   }
 }
 
-// <select
-//   multiple={true}
-//   value={this.state.vale}
-//   onChange={this.handleChange}
-// >
-//   <option value="grapefruit">Grapefruit</option>
-//   <option value="lime">Lime</option>
-//   <option value="coconut">Coconut</option>
-//   <option value="mango">Mango</option>
-// </select>
+{
+  /* <label>Month:</label>
+            <input
+              type="text"
+              name="month"
+              value={this.state.month}
+              onChange={e => this.handleChange(e)}
+            />  */
+}
+
+{
+  /* <label>Month:</label>
+            <select
+              name="month"
+              value={this.state.month}
+              onChange={e => this.handleChange(e)}
+            >
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">JDecember</option>
+            </select> */
+}
