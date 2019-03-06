@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import MapService from "./map-service";
 
-export default class SearchForm extends Component {
+export default class SearchForm2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchName: "", species: "", month: "", year: "" };
+    this.state = { searchName: "", species: "", month: "", year: "", search: "" };
     this.service = new MapService();
   }
 
@@ -15,9 +15,11 @@ export default class SearchForm extends Component {
     const species = this.state.species;
     const month = this.state.month;
     const year = this.state.year;
+    const search = "search2"
+
 
     this.service
-      .addNewSearch(searchName, species, month, year)
+      .addNewSearch(searchName, species, month, year, search)
       .then(response => {
         // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
@@ -27,7 +29,8 @@ export default class SearchForm extends Component {
           searchName: "",
           species: "",
           month: "",
-          year: ""
+          year: "",
+          search: ""
         });
         console.log("state is now2: ", this.state);
       })
@@ -43,7 +46,7 @@ export default class SearchForm extends Component {
     return (
       <div>
         <div>
-          <h4>Bird Search Form</h4>
+          <h4>Bird Search Form2</h4>
         </div>
         <div>
           <form onSubmit={this.handleFormSubmit}>

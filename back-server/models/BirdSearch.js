@@ -8,6 +8,7 @@ const BirdsearchSchema = new Schema(
     sciName: String,
     lat: Number,
     lng: Number,
+    search: String,
     creatorId: { type: Schema.Types.ObjectId, ref: "User" }
   },
   {

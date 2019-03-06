@@ -4,11 +4,13 @@ const BirdSearch = require("../models/BirdSearch");
 const axios = require("axios");
 
 birdRoutes.post("/", (req, res, next) => {
-  // console.log("req.body.searchName: ",req.body.searchName)
+  console.log("req.body.searchName: ",req.body.searchName)
+  console.log("req.body.search: ",req.body.search)
   const searchNameConst = req.body.searchName;
   const species = req.body.species;
   const month = req.body.month;
   const year = req.body.year;
+  const search = req.body.search
 
   function getData() {
     const reqArray = [];
@@ -56,7 +58,7 @@ birdRoutes.post("/", (req, res, next) => {
       .then(answer => {
         const array = [];
         answer.forEach(e => array.push(...e.data));
-        // console.log("answer.data: ",answer.data);
+        console.log("answer.data: ",answer.data);
         return array;
       })
       .then(data => {
@@ -68,6 +70,7 @@ birdRoutes.post("/", (req, res, next) => {
         let promiseArray = [];
         for (let k = 0; k < dataFiltered.length; k++) {
           dataFiltered[k].searchName = searchNameConst;
+          dataFiltered[k].search = search;
         }
         promiseArray.push(BirdSearch.create(dataFiltered));
         return Promise.all(promiseArray).then(data => data);
