@@ -73,33 +73,8 @@ export default class SearchForm extends Component {
               value={this.state.searchName}
               onChange={e => this.handleChange(e)}
             />
-            {/* <label>Bird species:</label>
-            <input
-              type="text"
-              name="species"
-              value={this.state.species}
-              onChange={e => this.handleChange(e)}
-            /> */}
 
-            {/* <ReactAutocomplete
-              items={this.state.birdnames}
-              shouldItemRender={(item, value) =>
-                item.toLowerCase().indexOf(value.toLowerCase()) > -1
-              }
-              getItemValue={item => item}
-              renderItem={(item, highlighted) => (
-                <div
-                  style={{
-                    backgroundColor: highlighted ? "#eee" : "transparent"
-                  }}
-                >
-                  {item}
-                </div>
-              )}
-              value={this.state.value}
-              onChange={e => this.setState({ value: e.target.value })}
-              onSelect={value => this.setState({ value })}
-            /> */}
+            <label>Bird species:</label>
             <ReactAutocomplete
               items={this.state.birdnames}
               shouldItemRender={(item, value) =>
@@ -181,6 +156,16 @@ export default class SearchForm extends Component {
       </div>
     );
   }
+}
+
+{
+  /* <label>Bird species:</label>
+            <input
+              type="text"
+              name="species"
+              value={this.state.species}
+              onChange={e => this.handleChange(e)}
+            /> */
 }
 
 {

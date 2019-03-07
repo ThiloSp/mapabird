@@ -31,8 +31,8 @@ export default class Mapbirds extends Component {
     this.setState(newState);
     console.log(dataFromForm[0].searchName);
     console.log(
-      "This is searchName after search 1:",
-      this.state.allBirdPoints.searchName
+      "This is search after search 1:",
+      this.state.allBirdPoints
     );
   };
   // resetfunction = event => {
@@ -52,6 +52,7 @@ export default class Mapbirds extends Component {
             <SearchForm2
               passFunction={this.handlerFunction}
               searchName={this.state.allBirdPoints.searchName}
+              species={this.state.allBirdPoints.sciName}
             />
           </div>
         ) : (

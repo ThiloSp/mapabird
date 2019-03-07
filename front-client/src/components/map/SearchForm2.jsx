@@ -6,13 +6,23 @@ export default class SearchForm2 extends Component {
     super(props);
     this.state = {
       searchName: this.props.searchName,
-      species: "",
+      species: this.props.species,
       month: "",
       year: "",
-      search: ""
+      search: "",
+      birdnames: []
     };
     this.service = new MapService();
   }
+
+  componentDidMount = () => {
+    this.service.getBirdNames().then(birdnames => {
+      const birdArray = birdnames.map((e, i) => {
+        return { id: i, label: e };
+      });
+      this.setState({ ...this.state, birdnames: birdArray });
+    });
+  };
 
   handleFormSubmit = event => {
     // console.log("state is now1: ", this.state);
@@ -36,7 +46,8 @@ export default class SearchForm2 extends Component {
           species: "",
           month: "",
           year: "",
-          search: ""
+          search: "",
+          birdnames: []
         });
         console.log("state is now2: ", this.state);
       })
@@ -56,13 +67,27 @@ export default class SearchForm2 extends Component {
         </div>
         <div>
           <form onSubmit={this.handleFormSubmit}>
-            <label>Bird species:</label>
-            <input
-              type="text"
-              name="species"
+            {/*    <label>Bird species:</label>
+            <ReactAutocomplete
+              items={this.state.birdnames}
+              shouldItemRender={(item, value) =>
+                item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
+              }
+              getItemValue={item => item.label}
+              renderItem={(item, highlighted) => (
+                <div
+                  key={item.id}
+                  style={{
+                    backgroundColor: highlighted ? "#eee" : "transparent"
+                  }}
+                >
+                  {item.label}
+                </div>
+              )}
               value={this.state.species}
-              onChange={e => this.handleChange(e)}
-            />
+              onChange={e => this.setState({ species: e.target.value })}
+              onSelect={species => this.setState({ species })}
+            /> */}
 
             <label>Month:</label>
             <select
@@ -124,55 +149,4 @@ export default class SearchForm2 extends Component {
       </div>
     );
   }
-}
-
-
-{/* <label>Name of your query:</label>
-            <input
-              type="text"
-              name="searchName"
-              value={this.state.searchName}
-              onChange={e => this.handleChange(e)}
-            /> */}
-
-{
-  /* <label>Month:</label>
-            <input
-              type="text"
-              name="month"
-              value={this.state.month}
-              onChange={e => this.handleChange(e)}
-            />  */
-}
-
-{
-  /* <label>Year:</label>
-            <input
-              type="text"
-              name="year"
-              value={this.state.year}
-              onChange={e => this.handleChange(e)}
-            /> */
-}
-
-{
-  /* <label>Month:</label>
-            <select
-              name="month"
-              value={this.state.month}
-              onChange={e => this.handleChange(e)}
-            >
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">JDecember</option>
-            </select> */
 }
