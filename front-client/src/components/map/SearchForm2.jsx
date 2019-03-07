@@ -4,12 +4,13 @@ import MapService from "./map-service";
 export default class SearchForm2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchName: "", species: "", month: "", year: "", search: "" };
+    this.state = { searchName: this.props.searchName, species: "", month: "", year: "", search: "" };
     this.service = new MapService();
   }
 
   handleFormSubmit = event => {
     // console.log("state is now1: ", this.state);
+    console.log(this.props.searchName)
     event.preventDefault();
     const searchName = this.state.searchName;
     const species = this.state.species;

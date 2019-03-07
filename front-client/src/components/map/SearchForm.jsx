@@ -20,7 +20,7 @@ export default class SearchForm extends Component {
     this.service
       .addNewSearch(searchName, species, month, year, search)
       .then(response => {
-        // console.log("searchresponse is: ", response);
+        console.log("searchresponse is: ", response);
         this.props.passFunction(response);
       })
       .then(() => {

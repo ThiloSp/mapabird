@@ -12,13 +12,13 @@ export class MapContainer extends Component {
       let image = {};
       if (point.search === "search1") {
         image = {
-          url: "/images/markerBlue.png",
-          scaledSize: new this.props.google.maps.Size(64, 64)
+          url: "/images/dotRed.png",
+          scaledSize: new this.props.google.maps.Size(30, 30)
         };
       } else {
         image = {
-          url: "/images/markerRed.png",
-          scaledSize: new this.props.google.maps.Size(64, 64)
+          url: "/images/dotBlue.png",
+          scaledSize: new this.props.google.maps.Size(30, 30)
         };
       }
       return <Marker position={point} key={idx} icon={image} />;
