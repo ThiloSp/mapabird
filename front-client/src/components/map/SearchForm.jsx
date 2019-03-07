@@ -11,13 +11,16 @@ export default class SearchForm extends Component {
       month: "",
       year: "",
       search: "",
-      birdnames: {}
+      birdnames: []
     };
     this.service = new MapService();
   }
   componentDidMount = () => {
     this.service.getBirdNames().then(birdnames => {
-      this.setState({ ...this.state, birdnames: birdnames });
+      const birdArray = birdnames.map((e, i) => {
+        return { id: i, label: e };
+      });
+      this.setState({ ...this.state, birdnames: birdArray });
     });
   };
 
@@ -43,7 +46,7 @@ export default class SearchForm extends Component {
           month: "",
           year: "",
           search: "",
-          birdnames: {}
+          birdnames: []
         });
         // console.log("state is now2: ", this.state);
       })
@@ -98,25 +101,25 @@ export default class SearchForm extends Component {
               onSelect={value => this.setState({ value })}
             /> */}
             <ReactAutocomplete
-        items={[
-          { id: 'foo', label: 'foo' },
-          { id: 'bar', label: 'bar' },
-          { id: 'baz', label: 'baz' },
-        ]}
-        shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
-        getItemValue={item => item.label}
-        renderItem={(item, highlighted) =>
-          <div
-            key={item.id}
-            style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
-          >
-            {item.label}
-          </div>
-        }
-        value={this.state.value}
-        onChange={e => this.setState({ value: e.target.value })}
-        onSelect={value => this.setState({ value })}
-      />
+              items={this.state.birdnames}
+              shouldItemRender={(item, value) =>
+                item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
+              }
+              getItemValue={item => item.label}
+              renderItem={(item, highlighted) => (
+                <div
+                  key={item.id}
+                  style={{
+                    backgroundColor: highlighted ? "#eee" : "transparent"
+                  }}
+                >
+                  {item.label}
+                </div>
+              )}
+              value={this.state.species}
+              onChange={e => this.setState({ species: e.target.value })}
+              onSelect={species => this.setState({ species })}
+            />
 
             <label>Month:</label>
             <select
