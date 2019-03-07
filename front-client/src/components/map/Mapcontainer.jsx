@@ -5,7 +5,7 @@ export class MapContainer extends Component {
   render() {
     const styleMap = {
       width: "100%",
-      height: "50%"
+      height: "100%"
     };
 
     const markers = this.props.allBirdPointsProps.map((point, idx) => {

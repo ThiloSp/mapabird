@@ -52,7 +52,7 @@ export default class SearchForm2 extends Component {
     return (
       <div>
         <div>
-          <h4>Bird Search Form2</h4>
+          <h4>Second Query</h4>
         </div>
         <div>
           <form onSubmit={this.handleFormSubmit}>

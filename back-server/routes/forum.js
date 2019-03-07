@@ -39,6 +39,7 @@ forumRoutes.post("/thread/new", (req, res, next) => {
 
 forumRoutes.get("/threads/:id", (req, res, next) => {
   Thread.findById(req.params.id)
+  .populate('creatorId')
     // .populate('comments')
     .then(thread => {
       res.status(200).json(thread);

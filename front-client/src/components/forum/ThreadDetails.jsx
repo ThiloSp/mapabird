@@ -5,6 +5,7 @@ import CommentForm from "./CommentForm";
 import CommentDetail from "./CommentDetail";
 import UserInfo from "./UserInfo";
 import MapForThreads from "../map/MapForThreads";
+import "./ThreadDetails.css";
 
 export default class ThreadDetails extends Component {
   constructor(props) {
@@ -13,14 +14,19 @@ export default class ThreadDetails extends Component {
     this.service = new ForumService();
   }
 
+  componentWillReceiveProps() {
+    this.getSingleThread();
+  }
+
   getSingleThread = () => {
     // console.log("this.props.match: ", this.props.match);
     const { params } = this.props.match; // to get id from URL
     this.service
       .getThreadDetails(params)
       .then(response => {
-        console.log("response: ", response);
         this.setState(response);
+        console.log("response: ", response);
+        console.log("rthis.state: ", this.state);
       })
       .catch(err => {
         console.log(err);
@@ -46,7 +52,7 @@ export default class ThreadDetails extends Component {
   };
 
   render() {
-    // console.log("this.state: ", this.state);
+    console.log("this.state: ", this.state);
     // console.log("this.state.comments: ", this.state.comments);
     // console.log("this.state.creatorId: ", this.state.creatorId);
     // console.log("this is searchName: ", this.state.searchName);
@@ -57,7 +63,7 @@ export default class ThreadDetails extends Component {
         <p>{this.state.content}</p>
         <div>
           {this.state.searchName ? (
-            <div>
+            <div className="map">
               <MapForThreads searchName={this.state.searchName} />
             </div>
           ) : (

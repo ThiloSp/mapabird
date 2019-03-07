@@ -40,12 +40,12 @@ export default class SearchForm extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-
+  
   render() {
     return (
       <div>
         <div>
-          <h4>Bird Search Form</h4>
+          <h4>First Query</h4>
         </div>
         <div>
           <form onSubmit={this.handleFormSubmit}>

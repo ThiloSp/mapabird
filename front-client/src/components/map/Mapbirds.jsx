@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import MapContainer from "./Mapcontainer";
-import data from "../../data.json";
+import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import SearchForm2 from "./SearchForm2";
 import MapForThreads from "./MapForThreads";
@@ -31,8 +30,17 @@ export default class Mapbirds extends Component {
     newState.allBirdPoints = dataFromForm[0];
     this.setState(newState);
     console.log(dataFromForm[0].searchName);
-    console.log("This is searchName after search 1:", this.state.allBirdPoints.searchName);
+    console.log(
+      "This is searchName after search 1:",
+      this.state.allBirdPoints.searchName
+    );
   };
+  // resetfunction = event => {
+  //   event.preventDefault();
+  //   let newState = { allBirdPoints: [] };
+
+  //   this.setState(newState);
+  // };
 
   render() {
     return (
@@ -49,9 +57,21 @@ export default class Mapbirds extends Component {
         ) : (
           undefined
         )}
+        {/* {this.state.allBirdPoints.searchName ? (
+          <div>
+            <form onSubmit={this.resetfunction}>
+              <button>new Search</button>/>
+            </form>
+          </div>
+        ) : (
+          undefined
+        )} */}
         {this.state.allBirdPoints.searchName ? (
           <div>
-            <MapForThreads searchName={this.state.allBirdPoints.searchName} search={this.state.allBirdPoints.search}/>
+            <MapForThreads
+              searchName={this.state.allBirdPoints.searchName}
+              search={this.state.allBirdPoints.search}
+            />
           </div>
         ) : (
           undefined
