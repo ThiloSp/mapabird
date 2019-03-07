@@ -28,10 +28,10 @@ export default class Mapbirds extends Component {
     let newState = {
       ...this.state
     };
-    newState.allBirdPoints = dataFromForm[0].searchName;
+    newState.allBirdPoints = dataFromForm[0];
     this.setState(newState);
     console.log(dataFromForm[0].searchName);
-    console.log("This is searchName after search 1:", this.state.allBirdPoints);
+    console.log("This is searchName after search 1:", this.state.allBirdPoints.searchName);
   };
 
   render() {
@@ -39,19 +39,19 @@ export default class Mapbirds extends Component {
       <div>
         <h2>This is Map Birds</h2>
         <SearchForm passFunction={this.handlerFunction} />
-        {this.state.allBirdPoints ? (
+        {this.state.allBirdPoints.searchName ? (
           <div>
             <SearchForm2
               passFunction={this.handlerFunction}
-              searchName={this.state.allBirdPoints}
+              searchName={this.state.allBirdPoints.searchName}
             />
           </div>
         ) : (
           undefined
         )}
-        {this.state.allBirdPoints ? (
+        {this.state.allBirdPoints.searchName ? (
           <div>
-            <MapForThreads searchName={this.state.allBirdPoints} />
+            <MapForThreads searchName={this.state.allBirdPoints.searchName} search={this.state.allBirdPoints.search}/>
           </div>
         ) : (
           undefined

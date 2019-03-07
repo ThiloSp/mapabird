@@ -10,6 +10,10 @@ export default class MapForThreads extends Component {
     this.service = new MapService();
   }
 
+  componentWillReceiveProps() {
+    this.getThreadBirds();
+  }
+
   getThreadBirds = () => {
     const searchName = this.props.searchName;
     console.log("this is searchName: ", searchName);

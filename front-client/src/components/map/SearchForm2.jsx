@@ -4,20 +4,25 @@ import MapService from "./map-service";
 export default class SearchForm2 extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchName: this.props.searchName, species: "", month: "", year: "", search: "" };
+    this.state = {
+      searchName: this.props.searchName,
+      species: "",
+      month: "",
+      year: "",
+      search: ""
+    };
     this.service = new MapService();
   }
 
   handleFormSubmit = event => {
     // console.log("state is now1: ", this.state);
-    console.log(this.props.searchName)
+    console.log(this.props.searchName);
     event.preventDefault();
     const searchName = this.state.searchName;
     const species = this.state.species;
     const month = this.state.month;
     const year = this.state.year;
-    const search = "search2"
-
+    const search = "search2";
 
     this.service
       .addNewSearch(searchName, species, month, year, search)
@@ -51,13 +56,6 @@ export default class SearchForm2 extends Component {
         </div>
         <div>
           <form onSubmit={this.handleFormSubmit}>
-            <label>Name of your query:</label>
-            <input
-              type="text"
-              name="searchName"
-              value={this.state.searchName}
-              onChange={e => this.handleChange(e)}
-            />
             <label>Bird species:</label>
             <input
               type="text"
@@ -128,6 +126,15 @@ export default class SearchForm2 extends Component {
   }
 }
 
+
+{/* <label>Name of your query:</label>
+            <input
+              type="text"
+              name="searchName"
+              value={this.state.searchName}
+              onChange={e => this.handleChange(e)}
+            /> */}
+
 {
   /* <label>Month:</label>
             <input
@@ -138,13 +145,15 @@ export default class SearchForm2 extends Component {
             />  */
 }
 
-{/* <label>Year:</label>
+{
+  /* <label>Year:</label>
             <input
               type="text"
               name="year"
               value={this.state.year}
               onChange={e => this.handleChange(e)}
-            /> */}
+            /> */
+}
 
 {
   /* <label>Month:</label>
