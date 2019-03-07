@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import SearchForm2 from "./SearchForm2";
 import MapForThreads from "./MapForThreads";
+import "./Mapbirds.scss";
 
 export default class Mapbirds extends Component {
   //  constructor(props) {
@@ -30,10 +30,7 @@ export default class Mapbirds extends Component {
     newState.allBirdPoints = dataFromForm[0];
     this.setState(newState);
     console.log(dataFromForm[0].searchName);
-    console.log(
-      "This is search after search 1:",
-      this.state.allBirdPoints
-    );
+    console.log("This is search after search 1:", this.state.allBirdPoints);
   };
   // resetfunction = event => {
   //   event.preventDefault();
@@ -45,7 +42,7 @@ export default class Mapbirds extends Component {
   render() {
     return (
       <div>
-        <h2>This is Map Birds</h2>
+        <h3 className="title">Map Birds</h3>
         <SearchForm passFunction={this.handlerFunction} />
         {this.state.allBirdPoints.searchName ? (
           <div>

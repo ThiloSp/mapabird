@@ -5,8 +5,8 @@ const DBURL = process.env.DBURL
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var start = new Date("2004/10/22"),
-    end = new Date("2004/12/31"),
+var start = new Date("2017/1/1"),
+    end = new Date("2018/12/31"),
     year = start.getFullYear(),
     month = start.getMonth()
 day = start.getDate(),

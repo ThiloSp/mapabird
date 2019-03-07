@@ -17,7 +17,7 @@ export class MapContainer extends Component {
         };
       } else {
         image = {
-          url: "/images/dotBlue.png",
+          url: "/images/dotDarkBlue.png",
           scaledSize: new this.props.google.maps.Size(30, 30)
         };
       }
@@ -42,5 +42,5 @@ export class MapContainer extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: process.env.GMAPS_KEY
+    apiKey: process.env.GMAPS_KEY
 })(MapContainer);

@@ -1,0 +1,34 @@
+.linkButton {
+  padding: 5px;
+  text-decoration: none;
+  background-color: white;
+  color:#a8c9da;
+  border: solid 2px #a8c9da;
+  border-radius: 10px;
+  &:hover {
+    background-color: #061324;
+    border: solid 2px #061324;
+    color:white;
+    text-decoration: none;
+  }
+}
+
+.formBoxCenterParent{
+  display: flex;
+  justify-content: center;
+}
+
+.formBoxCenter {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0;
+  width: 30%;
+}
+
+.formBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+}

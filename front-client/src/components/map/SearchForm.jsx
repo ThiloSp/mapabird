@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MapService from "./map-service";
 import ReactAutocomplete from "react-autocomplete";
+import "./SearchForm.scss";
 
 export default class SearchForm extends Component {
   constructor(props) {
@@ -60,14 +61,12 @@ export default class SearchForm extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h4>First Query</h4>
-        </div>
-        <div>
-          <form onSubmit={this.handleFormSubmit}>
+      <div className="searchForm">
+        <form className="form-inline" onSubmit={this.handleFormSubmit}>
+         
             <label>Name of your query:</label>
             <input
+              className="form-control"
               type="text"
               name="searchName"
               value={this.state.searchName}
@@ -98,6 +97,7 @@ export default class SearchForm extends Component {
 
             <label>Month:</label>
             <select
+              className="custom-select"
               name="month"
               value={this.state.month}
               onChange={e => this.handleChange(e)}
@@ -119,6 +119,7 @@ export default class SearchForm extends Component {
 
             <label>Year:</label>
             <select
+              className="custom-select"
               name="year"
               value={this.state.year}
               onChange={e => this.handleChange(e)}
@@ -150,9 +151,9 @@ export default class SearchForm extends Component {
               <option value="2018">2018</option>
             </select>
 
-            <input type="submit" value="submit" />
-          </form>
-        </div>
+            <input className="linkButton" type="submit" value="submit" />
+        
+        </form>
       </div>
     );
   }

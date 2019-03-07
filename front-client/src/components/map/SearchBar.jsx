@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+/* import React, { Component } from "react";
 import MapService from "./map-service";
 import ReactAutocomplete from "react-autocomplete";
+import "./S"
 
 export default class SearchBar extends Component {
   constructor(){
@@ -39,5 +40,5 @@ export default class SearchBar extends Component {
   }
 
 }
-
+ */
 
