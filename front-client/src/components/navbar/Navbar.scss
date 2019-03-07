@@ -1,0 +1,24 @@
+.nav {
+  background-color: #061324;
+}
+
+.nav li {
+  padding: 5px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.navButton{
+  background-color: #f2b134;
+  color: white;
+  border: solid 1px #f2b134;
+  &:hover {
+    background-color: #068587;
+  }
+}

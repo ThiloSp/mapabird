@@ -60,7 +60,6 @@ export default class ThreadDetails extends Component {
       <div>
         <h2>This is ThreadDetails</h2>
         <h3>{this.state.title}</h3>
-        <p>{this.state.content}</p>
         <div>
           {this.state.searchName ? (
             <div className="map">
@@ -78,6 +77,7 @@ export default class ThreadDetails extends Component {
             undefined
           )}
         </div>
+        <p>{this.state.content}</p>
         {/* show the Comments heading only if there are comments */}
         {this.state.comments && this.state.comments.length > 0 && (
           <h4>Comments</h4>
