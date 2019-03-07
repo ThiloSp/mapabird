@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ForumService from "./forum-service";
+import "./CommentForm.scss";
 
 export default class CommentForm extends Component {
   constructor(props) {
@@ -40,21 +41,26 @@ export default class CommentForm extends Component {
     if (this.state.isShowing) {
       return (
         <div>
-          <h3>Add Comment</h3>
           <form onSubmit={this.handleFormSubmit}>
-            <label>Title:</label>
-            <input
-              type="text"
-              name="title"
-              value={this.state.title}
-              onChange={e => this.handleChange(e)}
-            />
-            <label>Content:</label>
-            <textarea
-              name="content"
-              value={this.state.content}
-              onChange={e => this.handleChange(e)}
-            />
+            <div className="form-group">
+              <label>Title:</label>
+              <input
+                className="form-control"
+                type="text"
+                name="title"
+                value={this.state.title}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Content:</label>
+              <textarea
+                className="form-control"
+                name="content"
+                value={this.state.content}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
             <input type="submit" value="Submit" />
           </form>
         </div>
@@ -62,10 +68,43 @@ export default class CommentForm extends Component {
     }
   };
 
+  //   <form>
+  //   <div class="form-group">
+  //     <label for="exampleFormControlInput1">Email address</label>
+  //     <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+  //   </div>
+  //   <div class="form-group">
+  //     <label for="exampleFormControlSelect1">Example select</label>
+  //     <select class="form-control" id="exampleFormControlSelect1">
+  //       <option>1</option>
+  //       <option>2</option>
+  //       <option>3</option>
+  //       <option>4</option>
+  //       <option>5</option>
+  //     </select>
+  //   </div>
+  //   <div class="form-group">
+  //     <label for="exampleFormControlSelect2">Example multiple select</label>
+  //     <select multiple class="form-control" id="exampleFormControlSelect2">
+  //       <option>1</option>
+  //       <option>2</option>
+  //       <option>3</option>
+  //       <option>4</option>
+  //       <option>5</option>
+  //     </select>
+  //   </div>
+  //   <div class="form-group">
+  //     <label for="exampleFormControlTextarea1">Example textarea</label>
+  //     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+  //   </div>
+  // </form>
+
   render() {
     return (
       <div>
-        <button onClick={() => this.toggleForm()}>Add comment</button>
+        <button className="linkButton" onClick={() => this.toggleForm()}>
+          Add comment
+        </button>
         {this.showAddCommentForm()}
       </div>
     );

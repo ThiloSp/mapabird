@@ -5,7 +5,7 @@ import CommentForm from "./CommentForm";
 import CommentDetail from "./CommentDetail";
 import UserInfo from "./UserInfo";
 import MapForThreads from "../map/MapForThreads";
-import "./ThreadDetails.css";
+import "./ThreadDetails.scss";
 
 export default class ThreadDetails extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class ThreadDetails extends Component {
       .then(response => {
         this.setState(response);
         console.log("response: ", response);
-        console.log("rthis.state: ", this.state);
+        console.log("this.state: ", this.state);
       })
       .catch(err => {
         console.log(err);
@@ -47,7 +47,11 @@ export default class ThreadDetails extends Component {
         />
       );
     } else {
-      return <p>Please log in to make a comment</p>;
+      return (
+        <div className="green">
+          <Link className="linkButton" to={"/login"}>Please log in to make a comment</Link>
+        </div>
+      );
     }
   };
 
@@ -58,8 +62,8 @@ export default class ThreadDetails extends Component {
     // console.log("this is searchName: ", this.state.searchName);
     return (
       <div>
-        <h2>This is ThreadDetails</h2>
-        <h3>{this.state.title}</h3>
+        {/* <h2>This is ThreadDetails</h2> */}
+        <h3 className="threadTitle">{this.state.title}</h3>
         <div>
           {this.state.searchName ? (
             <div className="map">
@@ -70,28 +74,42 @@ export default class ThreadDetails extends Component {
           )}
         </div>
         {/* first constructor, second render, third componentDidMount, dann wegen stateWechsel wieder render. Da diese Daten aus dem componentDidMount kommen muss ich im render sicherstellen, dass creatorId schon vorhanden ist, bevor die Props gesendet werden. beim ersten render ist this.state.creatorId noch nicht da, also tritt im ternario undefined ein, was bedeutet, dass er gar nichts macht. beim zweiten render sind die Daten dann da und die Props werden geschickt. */}
-        <div>
-          {this.state.creatorId ? (
-            <UserInfo creator={this.state.creatorId} />
-          ) : (
-            undefined
-          )}
+        <div className="container">
+          <div className="row">
+            <div className="col-3 userinfo">
+              {this.state.creatorId ? (
+                <UserInfo creator={this.state.creatorId} />
+              ) : (
+                undefined
+              )}
+            </div>
+            <div className="col-9 text">
+              <p>{this.state.content}</p>
+            </div>
+          </div>
         </div>
-        <p>{this.state.content}</p>
         {/* show the Comments heading only if there are comments */}
-        {this.state.comments && this.state.comments.length > 0 && (
-          <h4>Comments</h4>
-        )}
-        {this.state.comments &&
-          this.state.comments.map((comment, index) => {
-            return (
-              <div key={index}>
-                <CommentDetail commentId={comment} />
-              </div>
-            );
-          })}
-        <div>{this.renderAddCommentForm()} </div>
-        <Link to={"/threads"}>Back to Forum</Link>
+        <div className="commentback">
+          {this.state.comments && this.state.comments.length > 0 && (
+            <h4>Comments</h4>
+          )}
+          {this.state.comments &&
+            this.state.comments.map((comment, index) => {
+              return (
+                <div>
+                  <div key={index}>
+                    <CommentDetail commentId={comment} />
+                  </div>
+                </div>
+              );
+            })}
+          <div className="green">
+          <p>{this.renderAddCommentForm()}</p>
+           </div>
+        </div>
+        <div className="red">
+        <Link className="linkButton" to={"/threads"}>Back to Forum</Link>
+        </div>
       </div>
     );
   }

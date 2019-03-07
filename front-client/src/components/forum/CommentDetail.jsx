@@ -28,14 +28,20 @@ export default class CommentDetail extends Component {
 
   render() {
     return (
-      <div>
-        {this.state.creatorId ? (
-          <UserInfo creator={this.state.creatorId} />
-        ) : (
-          undefined
-        )}
-        <h1>{this.state.title}</h1>
-        <p>{this.state.content}</p>
+      <div className="container">
+        <div className="row">
+          <div className="col-3 userinfo">
+            {this.state.creatorId ? (
+              <UserInfo creator={this.state.creatorId} />
+            ) : (
+              undefined
+            )}
+          </div>
+          <div className="col-9 text">
+            <h5>{this.state.title}</h5>
+            <p>{this.state.content}</p>
+          </div>
+        </div>
       </div>
     );
   }

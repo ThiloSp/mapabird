@@ -1,12 +1,25 @@
 import React, { Component } from "react";
 import MapService from "./map-service";
+import ReactAutocomplete from "react-autocomplete";
 
 export default class SearchForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchName: "", species: "", month: "", year: "", search: "" };
+    this.state = {
+      searchName: "",
+      species: "",
+      month: "",
+      year: "",
+      search: "",
+      birdnames: {}
+    };
     this.service = new MapService();
   }
+  componentDidMount = () => {
+    this.service.getBirdNames().then(birdnames => {
+      this.setState({ ...this.state, birdnames: birdnames });
+    });
+  };
 
   handleFormSubmit = event => {
     // console.log("state is now1: ", this.state);
@@ -15,7 +28,7 @@ export default class SearchForm extends Component {
     const species = this.state.species;
     const month = this.state.month;
     const year = this.state.year;
-    const search = "search1"
+    const search = "search1";
 
     this.service
       .addNewSearch(searchName, species, month, year, search)
@@ -29,7 +42,8 @@ export default class SearchForm extends Component {
           species: "",
           month: "",
           year: "",
-          search: ""
+          search: "",
+          birdnames: {}
         });
         // console.log("state is now2: ", this.state);
       })
@@ -40,7 +54,7 @@ export default class SearchForm extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-  
+
   render() {
     return (
       <div>
@@ -56,13 +70,53 @@ export default class SearchForm extends Component {
               value={this.state.searchName}
               onChange={e => this.handleChange(e)}
             />
-            <label>Bird species:</label>
+            {/* <label>Bird species:</label>
             <input
               type="text"
               name="species"
               value={this.state.species}
               onChange={e => this.handleChange(e)}
-            />
+            /> */}
+
+            {/* <ReactAutocomplete
+              items={this.state.birdnames}
+              shouldItemRender={(item, value) =>
+                item.toLowerCase().indexOf(value.toLowerCase()) > -1
+              }
+              getItemValue={item => item}
+              renderItem={(item, highlighted) => (
+                <div
+                  style={{
+                    backgroundColor: highlighted ? "#eee" : "transparent"
+                  }}
+                >
+                  {item}
+                </div>
+              )}
+              value={this.state.value}
+              onChange={e => this.setState({ value: e.target.value })}
+              onSelect={value => this.setState({ value })}
+            /> */}
+            <ReactAutocomplete
+        items={[
+          { id: 'foo', label: 'foo' },
+          { id: 'bar', label: 'bar' },
+          { id: 'baz', label: 'baz' },
+        ]}
+        shouldItemRender={(item, value) => item.label.toLowerCase().indexOf(value.toLowerCase()) > -1}
+        getItemValue={item => item.label}
+        renderItem={(item, highlighted) =>
+          <div
+            key={item.id}
+            style={{ backgroundColor: highlighted ? '#eee' : 'transparent'}}
+          >
+            {item.label}
+          </div>
+        }
+        value={this.state.value}
+        onChange={e => this.setState({ value: e.target.value })}
+        onSelect={value => this.setState({ value })}
+      />
 
             <label>Month:</label>
             <select
@@ -136,13 +190,15 @@ export default class SearchForm extends Component {
             />  */
 }
 
-{/* <label>Year:</label>
+{
+  /* <label>Year:</label>
             <input
               type="text"
               name="year"
               value={this.state.year}
               onChange={e => this.handleChange(e)}
-            /> */}
+            /> */
+}
 
 {
   /* <label>Month:</label>

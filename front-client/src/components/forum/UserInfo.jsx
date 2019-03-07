@@ -29,7 +29,7 @@ export default class UserInfo extends Component {
   render() {
     return (
       <div>
-        <img src={this.state.photoPath} alt="" />
+        <img className="user-pic" src={this.state.photoPath} alt="" />
         <p>{this.state.username}</p>
       </div>
     );

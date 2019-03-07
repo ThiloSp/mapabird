@@ -27,5 +27,9 @@ class MapService {
       .post("/threadbirds", { searchName })
       .then(response => response);
   };
+
+  getBirdNames = () => {
+    return this.service.get("/birdnames").then(response => response.data);
+  };
 }
 export default MapService;

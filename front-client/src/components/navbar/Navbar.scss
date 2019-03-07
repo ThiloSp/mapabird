@@ -15,10 +15,12 @@
 }
 
 .navButton{
-  background-color: #f2b134;
+  background-color: #A8C9DA;
   color: white;
-  border: solid 1px #f2b134;
+  border: solid 1px #A8C9DA;
+  border-radius: 10px;
   &:hover {
-    background-color: #068587;
+    background-color: #DB5756;
+    border: solid 1px #DB5756;
   }
 }

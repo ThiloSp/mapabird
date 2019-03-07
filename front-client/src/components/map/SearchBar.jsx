@@ -1,23 +1,39 @@
 import React, { Component } from "react";
+import MapService from "./map-service";
+import ReactAutocomplete from "react-autocomplete";
 
 export default class SearchBar extends Component {
   constructor(){
     super()
     this.state = {search: ""}
+    this.service = new MapService();
   }
 
-  handleChange =(e)=>{
-    e.preventDefault();
-    console.log(e.target.value)
-    let birdPointSearch = e.target.value;
-    console.log(birdPointSearch)
-    this.props.searchFunction(birdPointSearch)
-  }
+  
 
   render(){
     return(
       <div>
-        <input type="text" onChange={e => this.handleChange(e)} placeholder="Search..."></input>
+        <ReactAutocomplete
+              items={this.states.birdnames}
+              shouldItemRender={(item, value) =>
+                item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
+              }
+              getItemValue={item => item.label}
+              renderItem={(item, highlighted) => (
+                <div
+                  key={item.id}
+                  style={{
+                    backgroundColor: highlighted ? "#eee" : "transparent"
+                  }}
+                >
+                  {item.label}
+                </div>
+              )}
+              value={this.state.value}
+              onChange={e => this.setState({ value: e.target.value })}
+              onSelect={value => this.setState({ value })}
+            />
       </div>
     )
   }
@@ -25,23 +41,3 @@ export default class SearchBar extends Component {
 }
 
 
-/* constructor(){
-  super()
-  this.state = {search: ""}
-}
-
-handleChange =(e)=>{
-  e.preventDefault();
-  let productSearch = e.target.value;
-  this.props.searchFunction(productSearch)
-}
-
-render(){
-  return(
-    <div>
-      <input type="text" onChange={e => this.handleChange(e)} placeholder="Search..."></input>
-    </div>
-  )
-}
-
-} */

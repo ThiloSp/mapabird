@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import ForumService from "./forum-service";
 
 export default class ThreadListAll extends Component {
@@ -27,13 +27,15 @@ export default class ThreadListAll extends Component {
   render() {
     return (
       <div>
-        <h2>This is Forum</h2>
-        <div>
-          {this.state.listOfThreads.map(thread => {
+        <h2>Have a look at our Threads</h2>
+        <div >
+          {this.state.listOfThreads.map((thread, idx) => {
             return (
               <div key={thread._id}>
                 <Link to={`/threads/${thread._id}`}>
-                  <h3>{thread.title}</h3>
+                  <h3>
+                    Thread {idx + 1}: {thread.title}
+                  </h3>
                 </Link>
               </div>
             );
