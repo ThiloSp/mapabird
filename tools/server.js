@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 const axios = require("axios")
-const DBURL = "mongodb://localhost/mapabird"
+const DBURL = process.env.DBURL
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
