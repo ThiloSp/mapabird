@@ -25,14 +25,17 @@ class Navbar extends Component {
   };
   render() {
     return (
-      <nav /* className="nav" */>
+      <nav>
         <ul className="nav justify-content-end">
+        <div className="navbar-brand">
+          <img className="logoNav" src="/images/aguila-white.png" alt="" />
+        </div>
           <li className="nav-item">
             <Link to="/" style={{ textDecoration: "none", color: "#F1F1F1" }}>
               Home
             </Link>
           </li>
-          <li className={this.state.loggedInUser ? "hide" : "show"} >
+          <li className={this.state.loggedInUser ? "hide" : "show"}>
             <Link
               to="/login"
               style={{ textDecoration: "none", color: "#F1F1F1" }}
@@ -58,7 +61,9 @@ class Navbar extends Component {
           </li>
           <li className={this.state.loggedInUser ? "show" : "hide"}>
             <Link to="/">
-              <button className="navButton" onClick={() => this.logoutUser()}>Logout</button>
+              <button className="navButton" onClick={() => this.logoutUser()}>
+                Logout
+              </button>
             </Link>
           </li>
         </ul>
@@ -69,7 +74,8 @@ class Navbar extends Component {
 
 export default Navbar;
 
-{/* <ul class="nav justify-content-end">
+{
+  /* <ul class="nav justify-content-end">
   <li class="nav-item">
     <a class="nav-link active" href="#">Active</a>
   </li>
@@ -82,4 +88,5 @@ export default Navbar;
   <li class="nav-item">
     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
   </li>
-</ul> */}
+</ul> */
+}
