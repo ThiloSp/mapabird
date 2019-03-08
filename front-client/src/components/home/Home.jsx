@@ -6,7 +6,7 @@ const home = () => {
   return (
     <div>
       <h2 className="title">map A bird</h2>
-      <div className="container">
+      <div className="container marginCon">
         <div className="row">
           <div className="col">
             <Link style={{ textDecoration: "none", color: "#F1F1F1" }} to="/mapbirds">

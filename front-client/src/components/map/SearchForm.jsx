@@ -62,7 +62,7 @@ export default class SearchForm extends Component {
   render() {
     return (
       <div className="searchForm">
-        <form className="form-inline" onSubmit={this.handleFormSubmit}>
+        <form className="form-inline searchform" onSubmit={this.handleFormSubmit}>
          
             <label>Name of your query:</label>
             <input
@@ -151,7 +151,7 @@ export default class SearchForm extends Component {
               <option value="2018">2018</option>
             </select>
 
-            <input className="linkButton" type="submit" value="submit" />
+            <input className="linkButton buttonSearchform" type="submit" value="submit" />
         
         </form>
       </div>

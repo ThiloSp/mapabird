@@ -37,9 +37,9 @@ class Signup extends Component {
     return (
       <div className="formBoxCenterParent">
         <div className="formBoxCenter">
-          <h2>Sign-up</h2>
+          <h2 className="title">Sign-up</h2>
           <div>
-            <form onSubmit={this.handleFormSubmit}>
+            <form className="backgroundLightBlue" onSubmit={this.handleFormSubmit}>
               <div className="form-group">
                 <label>Username:</label>
                 <input
@@ -63,13 +63,13 @@ class Signup extends Component {
               <input className="linkButton" type="submit" value="Signup" />
             </form>
 
-            <p>Already have account?</p>
-            <div>
+            <p className="marginLink">
+              Already have account?{" "}
               <Link className="linkButton" to="/login">
                 {" "}
                 Login
               </Link>
-            </div>
+            </p>
           </div>
         </div>
       </div>
