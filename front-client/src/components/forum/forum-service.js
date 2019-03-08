@@ -25,9 +25,17 @@ class ForumService {
       .then(response => response.data);
   };
 
+  deleteThread = params => {
+    return this.service
+      .delete(`/threads/${params.id}`)
+      .then(response => response.data);
+  };
+
+  
+
   getThreadDetails = params => {
     return this.service
-      .get(`/threads/${params.id}`) //params ok?
+      .get(`/threads/${params.id}`)
       .then(response => response.data);
   };
 

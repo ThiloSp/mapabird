@@ -49,10 +49,31 @@ export default class ThreadDetails extends Component {
     } else {
       return (
         <div className="green">
-          <Link className="linkButton" to={"/login"}>Please log in to make a comment</Link>
+          <Link className="linkButton" to={"/login"}>
+            Please log in to make a comment
+          </Link>
         </div>
       );
     }
+  };
+
+  deleteThread = () => {
+    console.log("this.props.match: ", this.props.match);
+    const { params } = this.props.match;
+    this.service.deleteThread(params)
+    .then(response => {
+      this.setState(response);
+      console.log("response: ", response);
+      console.log("this.state: ", this.state);
+    })
+
+    }
+    /* .then( () =>{
+        this.props.history.push('/projects'); // !!!         
+    })
+    .catch((err)=>{
+        console.log(err)
+    }) */
   };
 
   render() {
@@ -86,6 +107,7 @@ export default class ThreadDetails extends Component {
             <div className="col-9 text">
               <p>{this.state.content}</p>
             </div>
+            <button onClick={() => this.deleteThread()}>Delete Thread</button>
           </div>
         </div>
         {/* show the Comments heading only if there are comments */}
@@ -104,11 +126,13 @@ export default class ThreadDetails extends Component {
               );
             })}
           <div className="green">
-          <p>{this.renderAddCommentForm()}</p>
-           </div>
+            <p>{this.renderAddCommentForm()}</p>
+          </div>
         </div>
         <div className="red">
-        <Link className="linkButton" to={"/threads"}>Back to Forum</Link>
+          <Link className="linkButton" to={"/threads"}>
+            Back to Forum
+          </Link>
         </div>
       </div>
     );

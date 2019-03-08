@@ -39,7 +39,7 @@ forumRoutes.post("/thread/new", (req, res, next) => {
 
 forumRoutes.get("/threads/:id", (req, res, next) => {
   Thread.findById(req.params.id)
-  .populate('creatorId')
+    .populate("creatorId")
     // .populate('comments')
     .then(thread => {
       res.status(200).json(thread);
@@ -92,6 +92,18 @@ forumRoutes.post("/comment/userinfo", (req, res, next) => {
   User.findById(req.body.creatorId)
     .then(theUser => {
       res.json(theUser);
+    })
+    .catch(err => {
+      res.json(err);
+    });
+});
+
+forumRoutes.delete("/threads/:id", (req, res, next) => {
+  Thread.findByIdAndRemove(req.params.id)
+    .then(() => {
+      res.json({
+        message: `Thread with ${req.params.id} is removed successfully.`
+      });
     })
     .catch(err => {
       res.json(err);
