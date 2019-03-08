@@ -13,7 +13,7 @@ export default class ThreadForm extends Component {
     const title = this.state.title;
     const searchName = this.state.searchName;
     const content = this.state.content;
-    const creatorId = this.props.userInSession._id
+    const creatorId = this.props.userInSession._id;
     // console.log("creatorId: ",creatorId)
     this.service
       .addNewThread(title, content, creatorId, searchName)
@@ -21,7 +21,7 @@ export default class ThreadForm extends Component {
         this.setState({
           title: "",
           content: "",
-          searchName: "" 
+          searchName: ""
         });
       })
       .catch(error => console.log(error));
@@ -36,31 +36,42 @@ export default class ThreadForm extends Component {
 
   render() {
     return (
-      <div>
-        <h2>This is New Thread</h2>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={e => this.handleChange(e)}
-          />
-          <label>Search you want to show:</label>
-          <input
-            type="text"
-            name="searchName"
-            value={this.state.searchName}
-            onChange={e => this.handleChange(e)}
-          />
-          <label>Content:</label>
-          <textarea
-            name="content"
-            value={this.state.content}
-            onChange={e => this.handleChange(e)}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+      <div className="formBoxCenterParent">
+        <div className="formBoxCenter">
+          <h2>New Thread</h2>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="form-group">
+              <label>Title:</label>
+              <input
+                className="form-control"
+                type="text"
+                name="title"
+                value={this.state.title}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Query you want to show:</label>
+              <input
+                className="form-control"
+                type="text"
+                name="searchName"
+                value={this.state.searchName}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Content:</label>
+              <textarea
+                className="form-control"
+                name="content"
+                value={this.state.content}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            <input className="linkButton" type="submit" value="Submit" />
+          </form>
+        </div>
       </div>
     );
   }

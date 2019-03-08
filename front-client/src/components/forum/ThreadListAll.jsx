@@ -26,20 +26,31 @@ export default class ThreadListAll extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Have a look at our Threads</h2>
-        <div >
-          {this.state.listOfThreads.map((thread, idx) => {
-            return (
-              <div key={thread._id}>
-                <Link to={`/threads/${thread._id}`}>
-                  <h3>
-                    Thread {idx + 1}: {thread.title}
-                  </h3>
-                </Link>
-              </div>
-            );
-          })}
+      <div className="container">
+        <div className="row">
+          <div classname="col-4">
+            <div className="backgroundLightBlue">
+              <h2>Have a look at our Threads</h2>
+            </div>
+          </div>
+          <div className="col">
+            <div className="backgroundDark">
+              {this.state.listOfThreads.map((thread, idx) => {
+                return (
+                  <div className="backgroundGrey" key={thread._id}>
+                    <Link
+                      style={{ textDecoration: "none", color: "#061324" }}
+                      to={`/threads/${thread._id}`}
+                    >
+                      <p className="threadLink">
+                        Thread {idx + 1}: {thread.title}
+                      </p>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     );

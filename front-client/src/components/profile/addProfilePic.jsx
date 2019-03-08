@@ -20,7 +20,7 @@ export default class AddProfilePic extends Component {
     return (
       <div>
         <form>
-          <label>Change your profile picture</label>
+          <p>Change your profile picture:</p>
           <input type="file" onChange={e => this.props.handleChange(e)} />
         </form>
       </div>

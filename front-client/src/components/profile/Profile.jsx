@@ -4,6 +4,7 @@ import AuthService from "../authentification/auth-service";
 import ProfileService from "./profile-service";
 import AddProfilePic from "./addProfilePic";
 import ThreadListPersonal from "../forum/ThreadListPersonal";
+import "./Profile.scss";
 
 class Profile extends Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class Profile extends Component {
         console.log("response is: ", response);
         this.setState({
           ...this.state,
-          loggedInUser: { photoPath: response.secure_url } 
+          loggedInUser: { photoPath: response.secure_url }
         });
         console.log(this.state);
         this.profileService
@@ -51,14 +52,34 @@ class Profile extends Component {
     if (this.state.loggedInUser) {
       return (
         <div>
-          <h2>Welcome, {this.state.loggedInUser.username}!</h2>
-          <img src={this.state.loggedInUser.photoPath} alt="" />
-          <AddProfilePic
-            userInSession={this.state.loggedInUser}
-            handleChange={this.handleFileUpload}
-          />
-          <ThreadListPersonal userInSession={this.state.loggedInUser}/>
-          <Link to="/threadform">New Thread</Link>
+          <h2 className="title">Welcome {this.state.loggedInUser.username}!</h2>
+          <div className="container">
+            <div className="row">
+              <div classname="col-4">
+                <div className="backgroundLightBlue">
+                  <img
+                    className="profilePic"
+                    src={this.state.loggedInUser.photoPath}
+                    alt=""
+                  />
+                  <AddProfilePic
+                    userInSession={this.state.loggedInUser}
+                    handleChange={this.handleFileUpload}
+                  />
+                </div>
+              </div>
+              <div className="col">
+                <div className="backgroundDark">
+                  <ThreadListPersonal userInSession={this.state.loggedInUser} />
+                </div>
+                <p className="green">
+                  <Link className="linkButton" to="/threadform">
+                    New Thread
+                  </Link>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {

@@ -94,7 +94,7 @@ export default class ThreadDetails extends Component {
             <div className="col-9 text">
               <p>{this.state.content}</p>
             </div>
-            <button onClick={() => this.deleteThread()}>Delete Thread</button>
+            <button className="linkButton red" onClick={() => this.deleteThread()}>Delete Thread</button>
           </div>
         </div>
         {/* show the Comments heading only if there are comments */}

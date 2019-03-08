@@ -35,21 +35,19 @@ export default class ThreadListPersonal extends Component {
   render() {
     return (
       <div>
-        <h2>Your Threads:</h2>
-        <div>
-          {this.state.listOfThreads.map(thread => {
-            return (
-              <div key={thread._id}>
-                <Link to={`/threads/${thread._id}`}>
-                  <h3>{thread.title}</h3>
-                </Link>
-               {/*  <button onClick={() => this.deleteThread()}>
+        <h3 className="whiteTextTitle">Your Threads:</h3>
+        {this.state.listOfThreads.map(thread => {
+          return (
+            <div className="backgroundGrey" key={thread._id}>
+              <Link style={{ textDecoration: "none", color: "#061324" }} to={`/threads/${thread._id}`}>
+                <p className="threadLink">{thread.title}</p>
+              </Link>
+              {/*  <button onClick={() => this.deleteThread()}>
                   Delete Thread
                 </button> */}
-              </div>
-            );
-          })}
-        </div>
+            </div>
+          );
+        })}
       </div>
     );
   }
