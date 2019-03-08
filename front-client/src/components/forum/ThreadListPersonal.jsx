@@ -13,7 +13,7 @@ export default class ThreadListPersonal extends Component {
     const userId = this.props.userInSession._id;
     console.log("this is userId: ", userId);
     this.service.getPersonalThreads(userId).then(response => {
-      console.log("response1 is: ", response)
+      console.log("response1 is: ", response);
       console.log("response1 threads is: ", response.threads);
       this.setState({
         listOfThreads: response.threads
@@ -21,6 +21,12 @@ export default class ThreadListPersonal extends Component {
       console.log(this.state.listOfThreads);
     });
   };
+
+  /* deleteThread = () => {
+    // console.log("this.props.match: ", this.props.match);
+    // const { params } = this.props.match;
+    this.service.deleteThread();
+  }; */
 
   componentDidMount() {
     this.getList();
@@ -37,6 +43,9 @@ export default class ThreadListPersonal extends Component {
                 <Link to={`/threads/${thread._id}`}>
                   <h3>{thread.title}</h3>
                 </Link>
+               {/*  <button onClick={() => this.deleteThread()}>
+                  Delete Thread
+                </button> */}
               </div>
             );
           })}

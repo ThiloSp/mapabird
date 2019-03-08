@@ -25,7 +25,7 @@ class ForumService {
       .then(response => response.data);
   };
 
-  deleteThread = params => {
+  deleteThread = (params) => {
     return this.service
       .delete(`/threads/${params.id}`)
       .then(response => response.data);

@@ -60,20 +60,7 @@ export default class ThreadDetails extends Component {
   deleteThread = () => {
     console.log("this.props.match: ", this.props.match);
     const { params } = this.props.match;
-    this.service.deleteThread(params)
-    .then(response => {
-      this.setState(response);
-      console.log("response: ", response);
-      console.log("this.state: ", this.state);
-    })
-
-    }
-    /* .then( () =>{
-        this.props.history.push('/projects'); // !!!         
-    })
-    .catch((err)=>{
-        console.log(err)
-    }) */
+    this.service.deleteThread(params);
   };
 
   render() {
