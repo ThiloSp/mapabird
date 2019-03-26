@@ -10,7 +10,7 @@ const home = () => {
           <img className="titleLogo" src="/images/aguila-red.png" alt="" />
         </h2>
       </div>
-      <div className="container marginCon">
+      <div className="container marginCon"> {/* marginCon */}
         <div className="row">
           <div className="col">
             <Link
