@@ -35,7 +35,6 @@ export class MapContainer extends Component {
         }}
       >
         {markers}
-        {/* <Marker position={{ lat: 44.05, lng: -3.02 }} /> */}
       </Map>
     );
   }
