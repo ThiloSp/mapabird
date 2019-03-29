@@ -6,4 +6,4 @@ Usa el buscador para pintar las observaciones de una especie de aves en dos mese
 Si quieres comenta tu búsquedas y describe que posibles conclusiones pudiste sacar de ellas. 
 O métete en el **forum** y discute las observaciones de otros usuários.
 
-[Visita mapAbird](https://mapabird.herokuapp.com/)
+[mapAbird](https://mapabird.herokuapp.com/)
