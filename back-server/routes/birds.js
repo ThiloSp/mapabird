@@ -40,7 +40,7 @@ birdRoutes.post("/", (req, res, next) => {
     .then(data => {
       const xArray = [];
       data.forEach(e => xArray.push(...e));
-      // console.log("data to send back",data)
+      console.log("data to send back",data)
       return res.status(200).json(xArray);
     })
     .catch(err => {

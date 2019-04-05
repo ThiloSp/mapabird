@@ -9,14 +9,10 @@ class MapService {
     this.service = service;
   }
 
-  // getAllThreads = () => {
-  //   return this.service.get("/threads").then(responseDB => responseDB.data);
-  // };
-
   addNewSearch = (searchName, species, month, year, search) => {
-    console.log("This is searchname: ", searchName);
-    console.log("This is month: ", month);
-    console.log("This is year: ", year);
+    // console.log("This is searchname: ", searchName);
+    // console.log("This is month: ", month);
+    // console.log("This is year: ", year);
     return this.service
       .post("/", { searchName, species, month, year, search })
       .then(response => response.data);

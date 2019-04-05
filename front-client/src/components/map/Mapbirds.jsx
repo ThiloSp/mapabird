@@ -5,19 +5,6 @@ import MapForThreads from "./MapForThreads";
 import "./Mapbirds.scss";
 
 export default class Mapbirds extends Component {
-  //  constructor(props) {
-  //     super(props);
-  //     this.state = { searchName: "" };
-  //   }
-
-  //   handlerFunction = dataFromForm => {
-  //     let newState = {
-  //       ...this.state
-  //     };
-  //     newState.allBirdPoints = dataFromForm;
-  //     this.setState(newState);
-  //   };
-
   constructor(props) {
     super(props);
     this.state = { allBirdPoints: [] };
@@ -32,12 +19,6 @@ export default class Mapbirds extends Component {
     console.log(dataFromForm[0].searchName);
     console.log("This is search after search 1:", this.state.allBirdPoints);
   };
-  // resetfunction = event => {
-  //   event.preventDefault();
-  //   let newState = { allBirdPoints: [] };
-
-  //   this.setState(newState);
-  // };
 
   render() {
     return (
@@ -55,15 +36,6 @@ export default class Mapbirds extends Component {
         ) : (
           undefined
         )}
-        {/* {this.state.allBirdPoints.searchName ? (
-          <div>
-            <form onSubmit={this.resetfunction}>
-              <button>new Search</button>/>
-            </form>
-          </div>
-        ) : (
-          undefined
-        )} */}
         {this.state.allBirdPoints.searchName ? (
           <div>
             <MapForThreads
@@ -74,7 +46,6 @@ export default class Mapbirds extends Component {
         ) : (
           undefined
         )}
-        {/* {<MapContainer allBirdPointsProps={this.state.allBirdPoints} />} */}
       </div>
     );
   }

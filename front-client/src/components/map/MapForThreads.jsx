@@ -16,11 +16,11 @@ export default class MapForThreads extends Component {
 
   getThreadBirds = () => {
     const searchName = this.props.searchName;
-    console.log("this is searchName: ", searchName);
+    // console.log("this is searchName: ", searchName);
     this.service
       .getBirdsFromBack(searchName)
       .then(response => {
-        console.log("this is response: ", response.data);
+        // console.log("this is response: ", response.data);
         this.setState({ allBirdPoints: response.data });
       })
       .catch(err => {

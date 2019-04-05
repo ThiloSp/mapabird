@@ -62,70 +62,72 @@ export default class SearchForm extends Component {
   render() {
     return (
       <div className="searchForm">
-        <form className="form-inline searchform" onSubmit={this.handleFormSubmit}>
-         
-            <label>Name of your query:</label>
-            <input
-              className="form-control"
-              type="text"
-              name="searchName"
-              value={this.state.searchName}
-              onChange={e => this.handleChange(e)}
-            />
+        <form
+          className="form-inline searchform"
+          onSubmit={this.handleFormSubmit}
+        >
+          <label>Name of your query:</label>
+          <input
+            className="form-control"
+            type="text"
+            name="searchName"
+            value={this.state.searchName}
+            onChange={e => this.handleChange(e)}
+          />
 
-            <label>Bird species:</label>
-            <ReactAutocomplete
-              items={this.state.birdnames}
-              shouldItemRender={(item, value) =>
-                item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
-              }
-              getItemValue={item => item.label}
-              renderItem={(item, highlighted) => (
-                <div
-                  key={item.id}
-                  style={{
-                    backgroundColor: highlighted ? "#eee" : "transparent"
-                  }}
-                >
-                  {item.label}
-                </div>
-              )}
-              value={this.state.species}
-              onChange={e => this.setState({ species: e.target.value })}
-              onSelect={species => this.setState({ species })}
-            />
+          <label>Bird species:</label>
+          <ReactAutocomplete
+            items={this.state.birdnames}
+            shouldItemRender={(item, value) =>
+              item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
+            }
+            getItemValue={item => item.label}
+            renderItem={(item, highlighted) => (
+              <div
+                key={item.id}
+                style={{
+                  backgroundColor: highlighted ? "#eee" : "transparent"
+                }}
+              >
+                {item.label}
+              </div>
+            )}
+            value={this.state.species}
+            onChange={e => this.setState({ species: e.target.value })}
+            onSelect={species => this.setState({ species })}
+          />
 
-            <label>Month:</label>
-            <select
-              className="custom-select"
-              name="month"
-              value={this.state.month}
-              onChange={e => this.handleChange(e)}
-            >
-              <option value="00">select</option>
-              <option value="01">January</option>
-              <option value="02">February</option>
-              <option value="03">March</option>
-              <option value="04">April</option>
-              <option value="05">May</option>
-              <option value="06">June</option>
-              <option value="07">July</option>
-              <option value="08">August</option>
-              <option value="09">September</option>
-              <option value="10">October</option>
-              <option value="11">November</option>
-              <option value="12">December</option>
-            </select>
+          <label>Month:</label>
+          <select
+            className="custom-select"
+            name="month"
+            value={this.state.month}
+            onChange={e => this.handleChange(e)}
+          >
+            <option value="00">select</option>
+            <option value="01">January</option>
+            <option value="02">February</option>
+            <option value="03">March</option>
+            <option value="04">April</option>
+            <option value="05">May</option>
+            <option value="06">June</option>
+            <option value="07">July</option>
+            <option value="08">August</option>
+            <option value="09">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
 
-            <label>Year:</label>
-            <select
-              className="custom-select"
-              name="year"
-              value={this.state.year}
-              onChange={e => this.handleChange(e)}
-            >
-              <option value="1994">select</option>
-              {/* <option value="1995">1995</option>
+          <label>Year:</label>
+          <select
+            className="custom-select"
+            name="year"
+            value={this.state.year}
+            onChange={e => this.handleChange(e)}
+          >
+            <option value="1994">select</option>
+            {/* <option value="1995">1995</option>
               <option value="1996">1996</option>
               <option value="1997">1997</option>
               <option value="1998">1998</option>
@@ -145,14 +147,17 @@ export default class SearchForm extends Component {
               <option value="2012">2012</option>
               <option value="2013">2013</option>
               <option value="2014">2014</option> */}
-              <option value="2015">2015</option>
-              <option value="2016">2016</option>
-              <option value="2017">2017</option>
-              <option value="2018">2018</option>
-            </select>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+          </select>
 
-            <input className="linkButton buttonSearchform" type="submit" value="submit" />
-        
+          <input
+            className="linkButton buttonSearchform"
+            type="submit"
+            value="submit"
+          />
         </form>
       </div>
     );

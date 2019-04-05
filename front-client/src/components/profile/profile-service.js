@@ -10,16 +10,16 @@ class ProfileService {
   }
 
   handleUpload(theFile) {
-    console.log("file in service: ", theFile);
-    return this.service.post("/upload", theFile) 
-    .then(res => res.data);
+    // console.log("file in service: ", theFile);
+    return this.service.post("/upload", theFile).then(res => res.data);
   }
 
   updatePhotoProfile = (response, userID) => {
-    console.log("this is photo: ",response, userID)
-    return this.service.put("/update", { response, userID })
-    .then(res => res.data)
-  }
+    // console.log("this is photo: ",response, userID)
+    return this.service
+      .put("/update", { response, userID })
+      .then(res => res.data);
+  };
 }
 
 export default ProfileService;

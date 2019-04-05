@@ -23,24 +23,24 @@ class Profile extends Component {
   }
 
   handleFileUpload = e => {
-    console.log("The file to be uploaded is: ", e.target.files[0]);
-    console.log("user ID: ", this.state.loggedInUser._id);
+    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    // console.log("user ID: ", this.state.loggedInUser._id);
     const userID = this.state.loggedInUser._id;
     const uploadData = new FormData();
     uploadData.append("photoPath", e.target.files[0]);
     this.profileService
       .handleUpload(uploadData)
       .then(response => {
-        console.log("response is: ", response);
+        // console.log("response is: ", response);
         this.setState({
           ...this.state,
           loggedInUser: { photoPath: response.secure_url }
         });
-        console.log(this.state);
+        // console.log(this.state);
         this.profileService
           .updatePhotoProfile(response, userID)
           .then(response => {
-            console.log(response);
+            // console.log(response);
           });
       })
       .catch(err => {
@@ -71,11 +71,11 @@ class Profile extends Component {
               <div className="col">
                 <div className="backgroundDark">
                   <ThreadListPersonal userInSession={this.state.loggedInUser} />
-                <p>
-                  <Link className="linkButton" to="/threadform">
-                    New Thread
-                  </Link>
-                </p>
+                  <p>
+                    <Link className="linkButton" to="/threadform">
+                      New Thread
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>

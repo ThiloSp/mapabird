@@ -25,8 +25,8 @@ export default class ThreadDetails extends Component {
       .getThreadDetails(params)
       .then(response => {
         this.setState(response);
-        console.log("response: ", response);
-        console.log("this.state: ", this.state);
+        // console.log("response: ", response);
+        // console.log("this.state: ", this.state);
       })
       .catch(err => {
         console.log(err);
@@ -70,7 +70,6 @@ export default class ThreadDetails extends Component {
     // console.log("this is searchName: ", this.state.searchName);
     return (
       <div>
-        {/* <h2>This is ThreadDetails</h2> */}
         <h3 className="threadTitle">{this.state.title}</h3>
         <div>
           {this.state.searchName ? (
@@ -94,7 +93,12 @@ export default class ThreadDetails extends Component {
             <div className="col-9 text">
               <p>{this.state.content}</p>
             </div>
-            <button className="linkButton red" onClick={() => this.deleteThread()}>Delete Thread</button>
+            <button
+              className="linkButton red"
+              onClick={() => this.deleteThread()}
+            >
+              Delete Thread
+            </button>
           </div>
         </div>
         {/* show the Comments heading only if there are comments */}

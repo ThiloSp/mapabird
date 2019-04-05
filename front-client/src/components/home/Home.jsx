@@ -10,14 +10,14 @@ const home = () => {
           <img className="titleLogo" src="/images/aguila-red.png" alt="" />
         </h2>
       </div>
-      <div className="container marginCon"> {/* marginCon */}
+      <div className="container marginCon">
         <div className="row">
           <div className="col">
             <Link
               style={{ textDecoration: "none", color: "#F1F1F1" }}
               to="/mapbirds"
             >
-              <div className="card cardheight" /* style="width: 18rem;" */>
+              <div className="card cardheight">
                 <img
                   src="/images/mapBirds.png"
                   className="card-img-top cardImg"
@@ -34,7 +34,7 @@ const home = () => {
               style={{ textDecoration: "none", color: "#F1F1F1" }}
               to="/threads"
             >
-              <div className="card cardheight" /* style="width: 18rem;" */>
+              <div className="card cardheight">
                 <img
                   src="/images/forum.png"
                   className="card-img-top cardImg"

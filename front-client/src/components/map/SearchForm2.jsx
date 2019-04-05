@@ -49,7 +49,7 @@ export default class SearchForm2 extends Component {
           search: "",
           birdnames: []
         });
-        console.log("state is now2: ", this.state);
+        // console.log("state is now2: ", this.state);
       })
       .catch(error => console.log(error));
   };
@@ -62,29 +62,10 @@ export default class SearchForm2 extends Component {
   render() {
     return (
       <div className="searchForm">
-        <form className="form-inline searchform" onSubmit={this.handleFormSubmit}>
-          {/*    <label>Bird species:</label>
-            <ReactAutocomplete
-              items={this.state.birdnames}
-              shouldItemRender={(item, value) =>
-                item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
-              }
-              getItemValue={item => item.label}
-              renderItem={(item, highlighted) => (
-                <div
-                  key={item.id}
-                  style={{
-                    backgroundColor: highlighted ? "#eee" : "transparent"
-                  }}
-                >
-                  {item.label}
-                </div>
-              )}
-              value={this.state.species}
-              onChange={e => this.setState({ species: e.target.value })}
-              onSelect={species => this.setState({ species })}
-            /> */}
-
+        <form
+          className="form-inline searchform"
+          onSubmit={this.handleFormSubmit}
+        >
           <label>Month to compare:</label>
           <select
             className="custom-select"
@@ -141,7 +122,11 @@ export default class SearchForm2 extends Component {
             <option value="2018">2018</option>
           </select>
 
-          <input className="linkButton buttonSearchform" type="submit" value="submit" />
+          <input
+            className="linkButton buttonSearchform"
+            type="submit"
+            value="submit"
+          />
         </form>
       </div>
     );
