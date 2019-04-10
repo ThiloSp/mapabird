@@ -37,9 +37,10 @@ export default class SearchForm extends Component {
     const search = "search1";
 
     this.service
-      .addNewSearch(searchName, species, month, year, search)
+      .makeNewSearch(searchName, species, month, year, search)
+      // .addNewSearch(searchName, species, month, year, search)
       .then(response => {
-        // console.log("searchresponse is: ", response);
+        console.log("searchresponse is: ", response);
         this.props.passFunction(response);
       })
       .then(() => {
@@ -60,14 +61,14 @@ export default class SearchForm extends Component {
     const { name, value } = event.target;
     this.setState({ [name]: value });
   };
-  
+
   handlerFunction = dataFromFormComponents => {
     let { name, value } = dataFromFormComponents.target;
     this.setState({ ...this.state, [name]: value });
   };
 
   render() {
-    console.log("this.state: ", this.state);
+    // console.log("this.state: ", this.state);
     return (
       <div className="searchForm">
         <form
@@ -135,56 +136,4 @@ export default class SearchForm extends Component {
       </div>
     );
   }
-}
-
-{
-  /* <label>Bird species:</label>
-            <input
-              type="text"
-              name="species"
-              value={this.state.species}
-              onChange={e => this.handleChange(e)}
-            /> */
-}
-
-{
-  /* <label>Month:</label>
-            <input
-              type="text"
-              name="month"
-              value={this.state.month}
-              onChange={e => this.handleChange(e)}
-            />  */
-}
-
-{
-  /* <label>Year:</label>
-            <input
-              type="text"
-              name="year"
-              value={this.state.year}
-              onChange={e => this.handleChange(e)}
-            /> */
-}
-
-{
-  /* <label>Month:</label>
-            <select
-              name="month"
-              value={this.state.month}
-              onChange={e => this.handleChange(e)}
-            >
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">JDecember</option>
-            </select> */
 }

@@ -14,7 +14,6 @@ export default class SearchFormYears extends Component {
     const enteredSpecies = this.props.species;
     const enteredMonth = this.props.month;
     this.service.getYears(enteredSpecies, enteredMonth).then(years => {
-      console.log("returned years: ", years);
       this.setState({ ...this.state, years: years });
     });
   };

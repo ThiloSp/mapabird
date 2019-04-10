@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import SearchFormCompare from "./SearchFormCompare";
-import MapForThreads from "./MapForThreads";
+// import MapForThreads from "./MapForThreads";
 import "./Mapbirds.scss";
+import MapForSearches from "./MapForSearches";
 
 export default class Mapbirds extends Component {
   constructor(props) {
@@ -14,34 +15,30 @@ export default class Mapbirds extends Component {
     let newState = {
       ...this.state
     };
-    newState.allBirdPoints = dataFromForm[0];
+    dataFromForm.forEach(data => newState.allBirdPoints.push(data));
     this.setState(newState);
-    // console.log(dataFromForm[0].searchName);
-    // console.log("This is search after search 1:", this.state.allBirdPoints);
   };
 
   render() {
+    console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
     return (
       <div>
         <h3 className="title">Map Birds</h3>
         <SearchForm passFunction={this.handlerFunction} />
-        {this.state.allBirdPoints.searchName ? (
+        {this.state.allBirdPoints[0] ? (
           <div>
             <SearchFormCompare
               passFunction={this.handlerFunction}
-              searchName={this.state.allBirdPoints.searchName}
-              species={this.state.allBirdPoints.sciName}
+              searchName={this.state.allBirdPoints[0].searchName}
+              species={this.state.allBirdPoints[0].sciName}
             />
           </div>
         ) : (
           undefined
         )}
-        {this.state.allBirdPoints.searchName ? (
+        {this.state.allBirdPoints[0] ? (
           <div>
-            <MapForThreads
-              searchName={this.state.allBirdPoints.searchName}
-              search={this.state.allBirdPoints.search}
-            />
+            <MapForSearches allBirdPoints={this.state.allBirdPoints} />
           </div>
         ) : (
           undefined

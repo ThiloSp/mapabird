@@ -27,7 +27,8 @@ export default class SearchFormCompare extends Component {
     const search = "search2";
 
     this.service
-      .addNewSearch(searchName, species, month, year, search)
+      .makeNewSearch(searchName, species, month, year, search)
+      // .addNewSearch(searchName, species, month, year, search)
       .then(response => {
         // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
