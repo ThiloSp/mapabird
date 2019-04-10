@@ -27,5 +27,19 @@ class MapService {
   getBirdNames = () => {
     return this.service.get("/birdnames").then(response => response.data);
   };
+
+  getMonths = enteredSpecies => {
+    // console.log("in service: ", enteredSpecies);
+    return this.service
+      .post("/months", { enteredSpecies })
+      .then(response => response.data);
+  };
+
+  getYears = (enteredSpecies, enteredMonth) => {
+    // console.log("in service: ", enteredSpecies);
+    return this.service
+      .post("/years", { enteredSpecies, enteredMonth })
+      .then(response => response.data);
+  };
 }
 export default MapService;

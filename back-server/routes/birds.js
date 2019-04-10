@@ -40,7 +40,7 @@ birdRoutes.post("/", (req, res, next) => {
     .then(data => {
       const xArray = [];
       data.forEach(e => xArray.push(...e));
-      console.log("data to send back",data)
+      console.log("data to send back", data);
       return res.status(200).json(xArray);
     })
     .catch(err => {
@@ -63,6 +63,43 @@ birdRoutes.get("/birdnames", (req, res) => {
       if (a < b) return 1;
     });
     res.json(sorted);
+  });
+});
+
+birdRoutes.post("/months", (req, res) => {
+  // console.log("req.body: ", req.body.enteredSpecies);
+  Bird.find({ sciName: req.body.enteredSpecies }).distinct("obsDt", function(
+    error,
+    elems
+  ) {
+    var splitted = elems
+      .map(date => date.split("-").splice(1, 1))
+      .sort((a, b) => (a > b ? 1 : -1));
+    var months = [];
+    splitted.forEach(month => {
+      !months.includes(month[0]) ? months.push(month[0]) : undefined;
+    });
+    res.json(months);
+  });
+});
+
+birdRoutes.post("/years", (req, res) => {
+  console.log("req.body: ", req.body);
+  Bird.find({
+    $and: [
+      { sciName: req.body.enteredSpecies },
+      { obsDt: { $regex: `-${req.body.enteredMonth}-` } }
+    ]
+  }).distinct("obsDt", function(error, elems) {
+    var splitted = elems
+      .map(date => date.split("-").splice(0, 1))
+      .sort((a, b) => (a > b ? 1 : -1));
+    var years = [];
+    splitted.forEach(year => {
+      !years.includes(year[0]) ? years.push(year[0]) : undefined;
+    });
+    console.log("this is years: ", years);
+    res.json(years);
   });
 });
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SearchForm from "./SearchForm";
-import SearchForm2 from "./SearchForm2";
+import SearchFormCompare from "./SearchFormCompare";
 import MapForThreads from "./MapForThreads";
 import "./Mapbirds.scss";
 
@@ -16,8 +16,8 @@ export default class Mapbirds extends Component {
     };
     newState.allBirdPoints = dataFromForm[0];
     this.setState(newState);
-    console.log(dataFromForm[0].searchName);
-    console.log("This is search after search 1:", this.state.allBirdPoints);
+    // console.log(dataFromForm[0].searchName);
+    // console.log("This is search after search 1:", this.state.allBirdPoints);
   };
 
   render() {
@@ -27,7 +27,7 @@ export default class Mapbirds extends Component {
         <SearchForm passFunction={this.handlerFunction} />
         {this.state.allBirdPoints.searchName ? (
           <div>
-            <SearchForm2
+            <SearchFormCompare
               passFunction={this.handlerFunction}
               searchName={this.state.allBirdPoints.searchName}
               species={this.state.allBirdPoints.sciName}
