@@ -39,7 +39,7 @@ export default class Mapbirds extends Component {
   };
 
   render() {
-    console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
+    // console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
     return (
       <div>
         <h3 className="title">Map Birds</h3>
