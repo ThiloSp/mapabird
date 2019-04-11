@@ -28,9 +28,10 @@ birdRoutes.post("/search", (req, res, next) => {
       // console.log("this is data: ", data);
       let promiseArray = [];
       for (let k = 0; k < data.length; k++) {
-        // console.log(typeof data[k])
+        // console.log("typeof:",typeof data[k])
         data[k].searchName = searchNameConst;
         data[k].search = search;
+        delete data[k]._id
       }
       promiseArray.push(data);
       return Promise.all(promiseArray)
