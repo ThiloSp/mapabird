@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
 import SearchFormCompare from "./SearchFormCompare";
 import "./Mapbirds.scss";
@@ -19,8 +20,26 @@ export default class Mapbirds extends Component {
     this.setState(newState);
   };
 
+  renderSaveForm = () => {
+    if (this.props.userInSession) {
+      return (
+        <div>
+          <SaveForm allBirdPoints={this.state.allBirdPoints} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="searchForm">
+          <Link className="linkButton" to={"/login"}>
+            Please log in to save your maps
+          </Link>
+        </div>
+      );
+    }
+  };
+
   render() {
-    // console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
+    console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
     return (
       <div>
         <h3 className="title">Map Birds</h3>
@@ -37,9 +56,7 @@ export default class Mapbirds extends Component {
           undefined
         )}
         {this.state.allBirdPoints[0] ? (
-          <div>
-            <SaveForm allBirdPoints={this.state.allBirdPoints} />
-          </div>
+          <div>{this.renderSaveForm()}</div>
         ) : (
           undefined
         )}

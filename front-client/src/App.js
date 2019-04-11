@@ -51,8 +51,18 @@ class App extends Component {
           userInSession={this.state.loggedInUser}
         />
         <Switch>
-          <Route exact path="/mapbirds" component={Mapbirds} />
-          {/* <Route exact path="/threads/:id" component={ThreadDetails} /> */}
+          {/* <Route exact path="/mapbirds" component={Mapbirds} /> */}
+          <Route
+            exact
+            path="/mapbirds" 
+            render={() =>
+            this.state.loggedInUser ? (
+              <Mapbirds userInSession={this.state.loggedInUser} />
+              ) : (
+                <Mapbirds userInSession={this.state.loggedInUser} />
+                )
+              }
+          />
           <Route
             exact
             path="/threads/:id"
