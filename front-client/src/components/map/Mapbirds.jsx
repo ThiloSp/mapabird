@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import SearchForm from "./SearchForm";
 import SearchFormCompare from "./SearchFormCompare";
-// import MapForThreads from "./MapForThreads";
 import "./Mapbirds.scss";
 import MapForSearches from "./MapForSearches";
+import SaveForm from "./SaveForm";
 
 export default class Mapbirds extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class Mapbirds extends Component {
   };
 
   render() {
-    console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
+    // console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
     return (
       <div>
         <h3 className="title">Map Birds</h3>
@@ -32,6 +32,13 @@ export default class Mapbirds extends Component {
               searchName={this.state.allBirdPoints[0].searchName}
               species={this.state.allBirdPoints[0].sciName}
             />
+          </div>
+        ) : (
+          undefined
+        )}
+        {this.state.allBirdPoints[0] ? (
+          <div>
+            <SaveForm allBirdPoints={this.state.allBirdPoints} />
           </div>
         ) : (
           undefined

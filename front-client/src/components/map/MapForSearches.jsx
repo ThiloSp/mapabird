@@ -17,7 +17,7 @@ export default class MapForSearches extends Component {
     }
 
   render() {
-    console.log(this.state.allBirdPoints)
+    // console.log(this.state.allBirdPoints)
     return (
       <div>
         <MapContainer allBirdPointsProps={this.state.allBirdPoints} />

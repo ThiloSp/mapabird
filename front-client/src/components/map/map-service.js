@@ -18,12 +18,10 @@ class MapService {
       .then(response => response.data);
   };
 
-  addNewSearch = (searchName, species, month, year, search) => {
-    // console.log("This is searchname: ", searchName);
-    // console.log("This is month: ", month);
-    // console.log("This is year: ", year);
+  saveNewSearch = birdsToSave => {
+    console.log("this is birdsToSave: ", birdsToSave);
     return this.service
-      .post("/save", { searchName, species, month, year, search })
+      .post("/save", { birdsToSave })
       .then(response => response.data);
   };
 

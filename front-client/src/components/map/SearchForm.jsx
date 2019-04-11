@@ -38,9 +38,8 @@ export default class SearchForm extends Component {
 
     this.service
       .makeNewSearch(searchName, species, month, year, search)
-      // .addNewSearch(searchName, species, month, year, search)
       .then(response => {
-        console.log("searchresponse is: ", response);
+        // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
       })
       .then(() => {
@@ -75,15 +74,6 @@ export default class SearchForm extends Component {
           className="form-inline searchform"
           onSubmit={this.handleFormSubmit}
         >
-          <label>Name of your query:</label>
-          <input
-            className="form-control"
-            type="text"
-            name="searchName"
-            value={this.state.searchName}
-            onChange={e => this.handleChange(e)}
-          />
-
           <label>Bird species:</label>
           <ReactAutocomplete
             items={this.state.birdnames}

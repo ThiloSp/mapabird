@@ -15,7 +15,7 @@ birdRoutes.post("/search", (req, res, next) => {
   const search = req.body.search;
   Bird.find({
     $and: [
-      { sciName: req.body.species },
+      { sciName: species },
       { obsDt: { $regex: `${year}` } },
       { obsDt: { $regex: `-${month}-` } }
     ]
@@ -40,7 +40,7 @@ birdRoutes.post("/search", (req, res, next) => {
     .then(data => {
       const xArray = [];
       data.forEach(e => xArray.push(...e));
-      console.log("data to send back", data);
+      // console.log("data to send back", data);
       return res.status(200).json(xArray);
     })
     .catch(err => {
@@ -49,44 +49,11 @@ birdRoutes.post("/search", (req, res, next) => {
 });
 
 birdRoutes.post("/save", (req, res, next) => {
-  // console.log("req.body.searchName: ", req.body.searchName);
-  // console.log("req.body.search: ", req.body.search);
-  const searchNameConst = req.body.searchName;
-  const species = req.body.species;
-  const month = req.body.month;
-  // console.log("month: ", month);
-  const year = req.body.year;
-  // console.log("year: ", year);
-  const search = req.body.search;
-  Bird.find({
-    $and: [
-      { sciName: req.body.species },
-      { obsDt: { $regex: `${year}` } },
-      { obsDt: { $regex: `-${month}-` } }
-    ]
-  })
+  // console.log("req.body: ", req.body);
+  BirdSearch.create(req.body.birdsToSave)
     .then(data => {
-      // console.log("this is data: ", data);
-      return data.map(e => e.toJSON());
-    })
-    .then(data => {
-      // console.log("this is data: ", data);
-      let promiseArray = [];
-      for (let k = 0; k < data.length; k++) {
-        // console.log(typeof data[k])
-        data[k].searchName = searchNameConst;
-        data[k].search = search;
-      }
-      promiseArray.push(BirdSearch.create(data));
-      return Promise.all(promiseArray)
-        .then(data => data)
-        .catch(err => console.log(err));
-    })
-    .then(data => {
-      const xArray = [];
-      data.forEach(e => xArray.push(...e));
-      console.log("data to send back", data);
-      return res.status(200).json(xArray);
+      console.log("This is data:",data)
+      return res.status(200).json(data);
     })
     .catch(err => {
       return res.status(500).json(err);
@@ -129,7 +96,6 @@ birdRoutes.post("/months", (req, res) => {
 });
 
 birdRoutes.post("/years", (req, res) => {
-  console.log("req.body: ", req.body);
   Bird.find({
     $and: [
       { sciName: req.body.enteredSpecies },
@@ -143,7 +109,6 @@ birdRoutes.post("/years", (req, res) => {
     splitted.forEach(year => {
       !years.includes(year[0]) ? years.push(year[0]) : undefined;
     });
-    console.log("this is years: ", years);
     res.json(years);
   });
 });

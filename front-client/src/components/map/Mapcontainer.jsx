@@ -18,7 +18,7 @@ export class MapContainer extends Component {
       } else {
         image = {
           url: "/images/dotDarkBlue.png",
-          scaledSize: new this.props.google.maps.Size(30, 30)
+          scaledSize: new this.props.google.maps.Size(25, 25)
         };
       }
       return <Marker position={point} key={idx} icon={image} />;
