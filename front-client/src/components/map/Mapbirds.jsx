@@ -24,7 +24,14 @@ export default class Mapbirds extends Component {
     if (this.props.userInSession) {
       return (
         <div>
-          <SaveForm allBirdPoints={this.state.allBirdPoints} />
+          <div>
+            <SaveForm allBirdPoints={this.state.allBirdPoints} />
+          </div>
+          <div className="searchForm">
+            <Link className="linkButton" to="/threadform">
+              New Thread
+            </Link>
+          </div>
         </div>
       );
     } else {

@@ -18,6 +18,7 @@ export default class SaveForm extends Component {
       .then(response => {
         // console.log("saveresponse is: ", response);
       })
+      then.
       .then(() => {
         this.setState({ searchName: "" });
         // console.log("state is now2: ", this.state);

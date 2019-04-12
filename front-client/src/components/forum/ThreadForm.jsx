@@ -14,9 +14,15 @@ export default class ThreadForm extends Component {
     const searchName = this.state.searchName;
     const content = this.state.content;
     const creatorId = this.props.userInSession._id;
-    // console.log("creatorId: ",creatorId)
+
+    // const birdsToSave = this.props.allBirdPoints;
+    // birdsToSave.forEach(data => (data.searchName = this.state.searchName);
     this.service
-      .addNewThread(title, content, creatorId, searchName)
+    // .saveNewSearch(birdsToSave)
+    // .then(response => {
+    //   // console.log("saveresponse is: ", response);
+    // })
+    .addNewThread(title, content, creatorId, searchName)
       .then(() => {
         this.setState({
           title: "",
@@ -28,10 +34,8 @@ export default class ThreadForm extends Component {
   };
 
   handleChange = event => {
-    console.log(event.target);
     const { name, value } = event.target;
     this.setState({ [name]: value });
-    console.log(this.state);
   };
 
   render() {
