@@ -30,7 +30,7 @@ export default class ThreadListAll extends Component {
         <h2 className="title">Do you like to read?</h2>
         <div className="container marginCon">
           <div className="row">
-            <div classname="col-4">
+            <div className="col">
               <div className="backgroundLightBlue">
                 <h2 className="whiteTextTitle">Have a look at our Threads</h2>
               </div>

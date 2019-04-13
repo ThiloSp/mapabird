@@ -88,7 +88,7 @@ class App extends Component {
               )
             }
           />
-          <Route
+         {/*  <Route
             exact
             path="/threadform"
             render={() =>
@@ -101,7 +101,7 @@ class App extends Component {
                   userInSession={this.state.loggedInUser}
                 />
               )
-            }
+            } */}
           />
           <Route
             exact

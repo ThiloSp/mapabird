@@ -5,6 +5,7 @@ import SearchFormCompare from "./SearchFormCompare";
 import "./Mapbirds.scss";
 import MapForSearches from "./MapForSearches";
 import SaveForm from "./SaveForm";
+import ThreadForm from "../forum/ThreadForm";
 
 export default class Mapbirds extends Component {
   constructor(props) {
@@ -23,15 +24,11 @@ export default class Mapbirds extends Component {
   renderSaveForm = () => {
     if (this.props.userInSession) {
       return (
-        <div>
-          <div>
-            <SaveForm allBirdPoints={this.state.allBirdPoints} />
-          </div>
-          <div className="searchForm">
-            <Link className="linkButton" to="/threadform">
-              New Thread
-            </Link>
-          </div>
+        <div className="searchForm">
+          <ThreadForm
+            allBirdPoints={this.state.allBirdPoints}
+            userInSession={this.props.userInSession}
+          />
         </div>
       );
     } else {
@@ -46,7 +43,7 @@ export default class Mapbirds extends Component {
   };
 
   render() {
-    // console.log("this.state.allBirdPoints:", this.state.allBirdPoints);
+    console.log("this.state.allBirdPoints:", this.state.allBirdPoints[0]);
     return (
       <div>
         <h3 className="title">Map Birds</h3>

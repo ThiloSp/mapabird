@@ -55,7 +55,7 @@ class Profile extends Component {
           <h2 className="title">Welcome {this.state.loggedInUser.username}!</h2>
           <div className="container marginCon">
             <div className="row">
-              <div classname="col-4">
+              <div className="col">
                 <div className="backgroundLightBlue">
                   <img
                     className="profilePic"
@@ -72,7 +72,7 @@ class Profile extends Component {
                 <div className="backgroundDark">
                   <ThreadListPersonal userInSession={this.state.loggedInUser} />
                   <p>
-                    <Link className="linkButton" to="/threadform">
+                    <Link className="linkButton" to="/mapbirds">
                       New Thread
                     </Link>
                   </p>
