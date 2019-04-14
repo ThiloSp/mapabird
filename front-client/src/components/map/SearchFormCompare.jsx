@@ -62,32 +62,40 @@ export default class SearchFormCompare extends Component {
           className="form-inline searchform"
           onSubmit={this.handleFormSubmit}
         >
-          <label>Month to compare:</label>
           {this.state.species ? (
-            <SearchFormMonths
-              passFunction={this.handlerFunction}
-              species={this.state.species}
-            />
+            <div className="form-inline searchform">
+              <label>Month to compare:</label>
+              <SearchFormMonths
+                passFunction={this.handlerFunction}
+                species={this.state.species}
+              />
+            </div>
           ) : (
             undefined
           )}
 
-          <label>Year to compare:</label>
           {this.state.month ? (
-            <SearchFormYears
-              passFunction={this.handlerFunction}
-              species={this.state.species}
-              month={this.state.month}
-            />
+            <div className="form-inline searchform">
+              <label>Year to compare:</label>
+              <SearchFormYears
+                passFunction={this.handlerFunction}
+                species={this.state.species}
+                month={this.state.month}
+              />
+            </div>
           ) : (
             undefined
           )}
 
-          <input
-            className="linkButton buttonSearchform"
-            type="submit"
-            value="submit"
-          />
+          {this.state.year ? (
+            <input
+              className="linkButton buttonSearchform"
+              type="submit"
+              value="submit"
+            />
+          ) : (
+            undefined
+          )}
         </form>
       </div>
     );

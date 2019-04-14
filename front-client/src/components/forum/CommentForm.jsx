@@ -61,7 +61,7 @@ export default class CommentForm extends Component {
                 onChange={e => this.handleChange(e)}
               />
             </div>
-            <input type="submit" value="Submit" />
+            <input className="linkButton" type="submit" value="Submit" />
           </form>
         </div>
       );
@@ -71,9 +71,13 @@ export default class CommentForm extends Component {
   render() {
     return (
       <div>
-        <button className="linkButton" onClick={() => this.toggleForm()}>
-          Add comment
-        </button>
+        {!this.state.isShowing ? (
+          <button className="linkButton" onClick={() => this.toggleForm()}>
+            Add comment
+          </button>
+        ) : (
+          undefined
+        )}
         {this.showAddCommentForm()}
       </div>
     );

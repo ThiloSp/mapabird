@@ -70,7 +70,7 @@ export default class ThreadDetails extends Component {
     // console.log("this is searchName: ", this.state.searchName);
     return (
       <div>
-        <h3 className="threadTitle">{this.state.title}</h3>
+        <h3 className="threadTitle">{this.state.searchName}</h3>
         <div>
           {this.state.searchName ? (
             <div className="map">

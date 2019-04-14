@@ -96,32 +96,39 @@ export default class SearchForm extends Component {
             onSelect={species => this.setState({ species })}
           />
 
-          <label>Month:</label>
           {this.state.species ? (
-            <SearchFormMonths
-              passFunction={this.handlerFunction}
-              species={this.state.species}
-            />
+            <div className="form-inline searchform">
+              <label>Month:</label>
+              <SearchFormMonths
+                passFunction={this.handlerFunction}
+                species={this.state.species}
+              />
+            </div>
           ) : (
             undefined
           )}
-
-          <label>Year:</label>
           {this.state.month ? (
-            <SearchFormYears
-              passFunction={this.handlerFunction}
-              species={this.state.species}
-              month={this.state.month}
-            />
+            <div className="form-inline searchform">
+              <label>Year:</label>
+              <SearchFormYears
+                passFunction={this.handlerFunction}
+                species={this.state.species}
+                month={this.state.month}
+              />
+            </div>
           ) : (
             undefined
           )}
 
-          <input
-            className="linkButton buttonSearchform"
-            type="submit"
-            value="submit"
-          />
+          {this.state.year ? (
+            <input
+              className="linkButton buttonSearchform"
+              type="submit"
+              value="submit"
+            />
+          ) : (
+            undefined
+          )}
         </form>
       </div>
     );

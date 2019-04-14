@@ -5,14 +5,18 @@ import MapService from "../map/map-service";
 export default class ThreadForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", content: "", searchName: "", isShowing: false };
+    this.state = {
+      content: "",
+      searchName: "",
+      isShowing: false
+    };
     this.forumService = new ForumService();
     this.mapService = new MapService();
   }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const title = this.state.title;
+
     const searchName = this.state.searchName;
     const content = this.state.content;
     const creatorId = this.props.userInSession._id;
@@ -23,10 +27,9 @@ export default class ThreadForm extends Component {
       // console.log("saveresponse is: ", response);
     });
     this.forumService
-      .addNewThread(title, content, creatorId, searchName)
+      .addNewThread(content, creatorId, searchName)
       .then(() => {
         this.setState({
-          title: "",
           content: "",
           searchName: "",
           isShowing: false
@@ -44,41 +47,34 @@ export default class ThreadForm extends Component {
     if (this.state.isShowing) {
       return (
         <div className="formBoxCenterParent">
-          <div className="formBoxCenter">
-            <h2>New Thread</h2>
-            <form onSubmit={this.handleFormSubmit}>
-              <div className="form-group">
-                <label>Title:</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="title"
-                  value={this.state.title}
-                  onChange={e => this.handleChange(e)}
-                />
-              </div>
-              <div className="form-group">
-                <label>Query you want to show:</label>
-                <input
-                  className="form-control"
-                  type="text"
-                  name="searchName"
-                  value={this.state.searchName}
-                  onChange={e => this.handleChange(e)}
-                />
-              </div>
-              <div className="form-group">
-                <label>Content:</label>
-                <textarea
-                  className="form-control"
-                  name="content"
-                  value={this.state.content}
-                  onChange={e => this.handleChange(e)}
-                />
-              </div>
-              <input className="linkButton" type="submit" value="Submit" />
-            </form>
-          </div>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="form-group">
+              <label>Title:</label>
+              <input
+                className="form-control"
+                type="text"
+                name="searchName"
+                value={this.state.searchName}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            <div className="form-group">
+              <label>Content:</label>
+              <textarea
+                className="form-control"
+                name="content"
+                value={this.state.content}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            <button
+              className="linkButton buttonSearchform"
+              type="submit"
+              value="submit"
+            >
+              Save
+            </button>
+          </form>
         </div>
       );
     }
@@ -95,9 +91,13 @@ export default class ThreadForm extends Component {
   render() {
     return (
       <div>
-        <button className="linkButton" onClick={() => this.toggleForm()}>
-          Save new Thread
-        </button>
+        {!this.state.isShowing ? (
+          <button className="linkButton" onClick={() => this.toggleForm()}>
+            Save new Thread
+          </button>
+        ) : (
+          undefined
+        )}
         {this.showMakeNewThreadForm()}
       </div>
     );

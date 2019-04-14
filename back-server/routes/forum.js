@@ -14,16 +14,15 @@ forumRoutes.get("/threads", (req, res, next) => {
 });
 
 forumRoutes.post("/personalthreads", (req, res, next) => {
-  console.log("This is user.id: ", req.body);
+  // console.log("This is user.id: ", req.body);
   Thread.find({ creatorId: req.body.userId }).then(threads => {
     res.json({ threads });
-    console.log("this is personal threads: ", threads);
+    // console.log("this is personal threads: ", threads);
   });
 });
 
 forumRoutes.post("/thread/new", (req, res, next) => {
   Thread.create({
-    title: req.body.title,
     content: req.body.content,
     comments: [],
     creatorId: req.body.creatorId,
@@ -50,7 +49,7 @@ forumRoutes.get("/threads/:id", (req, res, next) => {
 });
 
 forumRoutes.post("/comment/new", (req, res, next) => {
-  console.log("req.body: ", req.body);
+  // console.log("req.body: ", req.body);
   Comment.create({
     title: req.body.title,
     content: req.body.content,
@@ -88,7 +87,7 @@ forumRoutes.post("/comment/details", (req, res, next) => {
 });
 
 forumRoutes.post("/comment/userinfo", (req, res, next) => {
-  console.log("comment-getUserInfo-details req.body: ", req.body);
+  // console.log("comment-getUserInfo-details req.body: ", req.body);
   User.findById(req.body.creatorId)
     .then(theUser => {
       res.json(theUser);

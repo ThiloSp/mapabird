@@ -40,7 +40,7 @@ export default class ThreadListPersonal extends Component {
           return (
             <div className="backgroundGrey" key={thread._id}>
               <Link style={{ textDecoration: "none", color: "#061324" }} to={`/threads/${thread._id}`}>
-                <p className="threadLink">{thread.title}</p>
+                <p className="threadLink">{thread.searchName}</p>
               </Link>
               {/*  <button onClick={() => this.deleteThread()}>
                   Delete Thread

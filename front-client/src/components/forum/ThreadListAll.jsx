@@ -45,7 +45,7 @@ export default class ThreadListAll extends Component {
                         to={`/threads/${thread._id}`}
                       >
                         <p className="threadLink">
-                          Thread {idx + 1}: {thread.title}
+                          Thread {idx + 1}: {thread.searchName}
                         </p>
                       </Link>
                     </div>
