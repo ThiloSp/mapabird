@@ -31,6 +31,7 @@ birdRoutes.post("/search", (req, res, next) => {
         // console.log("typeof:",typeof data[k])
         data[k].searchName = searchNameConst;
         data[k].search = search;
+        data[k].date = `${month}/${year}`
         delete data[k]._id;
       }
       promiseArray.push(data);

@@ -20,14 +20,32 @@ export default class ThreadForm extends Component {
     const searchName = this.state.searchName;
     const content = this.state.content;
     const creatorId = this.props.userInSession._id;
-
     const birdsToSave = this.props.allBirdPoints;
-    birdsToSave.forEach(data => (data.searchName = this.state.searchName));
+    const dateSearch1 = [];
+    const dateSearch2 = [];
+    birdsToSave.forEach(data => {
+      data.searchName = this.state.searchName;
+      if (data.search === "search1" && !dateSearch1.includes(data.date))
+        dateSearch1.push(`${data.date}`);
+      else if (data.search === "search2" && !dateSearch2.includes(data.date))
+        dateSearch2.push(`${data.date}`);
+    });
+    const infoDisplay = `${this.props.allBirdPoints[0].comName} (${
+      this.props.allBirdPoints[0].sciName
+    })`;
+
     this.mapService.saveNewSearch(birdsToSave).then(response => {
       // console.log("saveresponse is: ", response);
     });
     this.forumService
-      .addNewThread(content, creatorId, searchName)
+      .addNewThread(
+        content,
+        creatorId,
+        searchName,
+        infoDisplay,
+        dateSearch1,
+        dateSearch2
+      )
       .then(() => {
         this.setState({
           content: "",

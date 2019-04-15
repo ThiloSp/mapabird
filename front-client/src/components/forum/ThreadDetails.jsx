@@ -19,14 +19,11 @@ export default class ThreadDetails extends Component {
   }
 
   getSingleThread = () => {
-    // console.log("this.props.match: ", this.props.match);
     const { params } = this.props.match; // to get id from URL
     this.service
       .getThreadDetails(params)
       .then(response => {
         this.setState(response);
-        // console.log("response: ", response);
-        // console.log("this.state: ", this.state);
       })
       .catch(err => {
         console.log(err);
@@ -58,19 +55,21 @@ export default class ThreadDetails extends Component {
   };
 
   deleteThread = () => {
-    console.log("this.props.match: ", this.props.match);
     const { params } = this.props.match;
     this.service.deleteThread(params);
   };
 
   render() {
-    console.log("this.state: ", this.state);
-    // console.log("this.state.comments: ", this.state.comments);
-    // console.log("this.state.creatorId: ", this.state.creatorId);
-    // console.log("this is searchName: ", this.state.searchName);
     return (
       <div>
         <h3 className="threadTitle">{this.state.searchName}</h3>
+        <p className="legend">
+          {this.state.infoDisplay} in{" "}
+          <img className="dots" src="../images/dotRed.png" alt="" />
+          {this.state.dateSearch1} and{" "}
+          <img className="dots" src="../images/dotDarkBlue.png" alt="" />
+          {this.state.dateSearch2}
+        </p>
         <div>
           {this.state.searchName ? (
             <div className="map">
