@@ -1,13 +1,18 @@
-.searchForm{
+.searchForm {
   margin: 20px 0;
   display: flex;
   justify-content: space-evenly;
 }
 
 .searchform label {
-margin: 0 5px;
+  margin: 0 5px;
 }
 
 .buttonSearchform {
   margin: 0 5px;
+}
+
+.birdName {
+  display: flex;
+  justify-content: center;
 }

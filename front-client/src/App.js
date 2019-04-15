@@ -8,7 +8,6 @@ import Profile from "./components/profile/Profile";
 import AuthService from "./components/authentification/auth-service";
 import Mapbirds from "./components/map/Mapbirds";
 import Navbar from "./components/navbar/Navbar";
-import ThreadForm from "./components/forum/ThreadForm";
 import ThreadListAll from "./components/forum/ThreadListAll";
 import ThreadDetails from "./components/forum/ThreadDetails";
 
@@ -51,30 +50,35 @@ class App extends Component {
           userInSession={this.state.loggedInUser}
         />
         <Switch>
-          {/* <Route exact path="/mapbirds" component={Mapbirds} /> */}
           <Route
             exact
-            path="/mapbirds" 
+            path="/mapbirds"
             render={() =>
-            this.state.loggedInUser ? (
-              <Mapbirds userInSession={this.state.loggedInUser} />
+              this.state.loggedInUser ? (
+                <Mapbirds userInSession={this.state.loggedInUser} />
               ) : (
                 <Mapbirds userInSession={this.state.loggedInUser} />
-                )
-              }
+              )
+            }
           />
           <Route
             exact
             path="/threads/:id"
-            render={({match}) =>
-            this.state.loggedInUser ? (
-              <ThreadDetails userInSession={this.state.loggedInUser} match={match} />
+            render={({ match }) =>
+              this.state.loggedInUser ? (
+                <ThreadDetails
+                  userInSession={this.state.loggedInUser}
+                  match={match}
+                />
               ) : (
-                <ThreadDetails userInSession={this.state.loggedInUser} match={match} />
-                )
-              }
+                <ThreadDetails
+                  userInSession={this.state.loggedInUser}
+                  match={match}
+                />
+              )
+            }
           />
-              <Route exact path="/threads" component={ThreadListAll} />
+          <Route exact path="/threads" component={ThreadListAll} />
 
           <Route exact path="/" component={Home} />
           <Route
@@ -87,21 +91,6 @@ class App extends Component {
                 <Profile userInSession={this.state.loggedInUser} />
               )
             }
-          />
-         {/*  <Route
-            exact
-            path="/threadform"
-            render={() =>
-              this.state.loggedInUser ? (
-                <ThreadForm
-                  userInSession={this.state.loggedInUser}
-                />
-              ) : (
-                <ThreadForm
-                  userInSession={this.state.loggedInUser}
-                />
-              )
-            } */}
           />
           <Route
             exact

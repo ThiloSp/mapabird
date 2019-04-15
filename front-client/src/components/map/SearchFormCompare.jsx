@@ -32,17 +32,17 @@ export default class SearchFormCompare extends Component {
         // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
       })
-      .then(() => {
-        this.setState({
-          searchName: "",
-          species: "",
-          month: "",
-          year: "",
-          search: ""
-        });
-        // console.log("state is now2: ", this.state);
-      })
-      .catch(error => console.log(error));
+      // .then(() => {
+      //   this.setState({
+      //     searchName: "",
+      //     species: "",
+      //     month: "",
+      //     year: "",
+      //     search: ""
+      //   });
+      //   // console.log("state is now2: ", this.state);
+      // })
+      // .catch(error => console.log(error));
   };
 
   handleChange = event => {

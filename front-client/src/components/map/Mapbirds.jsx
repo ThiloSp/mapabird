@@ -4,7 +4,6 @@ import SearchForm from "./SearchForm";
 import SearchFormCompare from "./SearchFormCompare";
 import "./Mapbirds.scss";
 import MapForSearches from "./MapForSearches";
-import SaveForm from "./SaveForm";
 import ThreadForm from "../forum/ThreadForm";
 
 export default class Mapbirds extends Component {

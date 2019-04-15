@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import MapService from "./map-service";
-import ReactAutocomplete from "react-autocomplete";
 import "./SearchForm.scss";
 import SearchFormMonths from "./SearchFormMonths";
 import SearchFormYears from "./SearchFormYears";
+import SearchBirdName from "./SearchBirdName";
 
 export default class SearchForm extends Component {
   constructor(props) {
@@ -13,19 +13,10 @@ export default class SearchForm extends Component {
       species: "",
       month: "",
       year: "",
-      search: "",
-      birdnames: []
+      search: ""
     };
     this.service = new MapService();
   }
-  componentDidMount = () => {
-    this.service.getBirdNames().then(birdnames => {
-      const birdArray = birdnames.map((e, i) => {
-        return { id: i, label: e };
-      });
-      this.setState({ ...this.state, birdnames: birdArray });
-    });
-  };
 
   handleFormSubmit = event => {
     // console.log("state is now1: ", this.state);
@@ -41,19 +32,19 @@ export default class SearchForm extends Component {
       .then(response => {
         // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
-      })
-      .then(() => {
-        this.setState({
-          searchName: "",
-          species: "",
-          month: "",
-          year: "",
-          search: "",
-          birdnames: []
-        });
-        // console.log("state is now2: ", this.state);
-      })
-      .catch(error => console.log(error));
+      });
+    // .then(() => {
+    //   this.setState({
+    //     searchName: "",
+    //     species: "",
+    //     month: "",
+    //     year: "",
+    //     search: "",
+    //     birdnames: []
+    //   });
+    //   // console.log("state is now2: ", this.state);
+    // })
+    // .catch(error => console.log(error));
   };
 
   handleChange = event => {
@@ -66,70 +57,57 @@ export default class SearchForm extends Component {
     this.setState({ ...this.state, [name]: value });
   };
 
+  handlerFunctionSpecies = dataFromFormComponents => {
+    this.setState({ ...this.state, species: dataFromFormComponents });
+  };
+
   render() {
     // console.log("this.state: ", this.state);
     return (
-      <div className="searchForm">
-        <form
-          className="form-inline searchform"
-          onSubmit={this.handleFormSubmit}
-        >
-          <label>Bird species:</label>
-          <ReactAutocomplete
-            items={this.state.birdnames}
-            shouldItemRender={(item, value) =>
-              item.label.toLowerCase().indexOf(value.toLowerCase()) > -1
-            }
-            getItemValue={item => item.label}
-            renderItem={(item, highlighted) => (
-              <div
-                key={item.id}
-                style={{
-                  backgroundColor: highlighted ? "#eee" : "transparent"
-                }}
-              >
-                {item.label}
+      <div>
+        <div className="birdName">
+          <SearchBirdName passFunction={this.handlerFunctionSpecies} />
+        </div>
+        <div className="searchForm">
+          <form
+            className="form-inline searchform"
+            onSubmit={this.handleFormSubmit}
+          >
+            {this.state.species ? (
+              <div className="form-inline searchform">
+                <label>Month:</label>
+                <SearchFormMonths
+                  passFunction={this.handlerFunction}
+                  species={this.state.species}
+                />
               </div>
+            ) : (
+              undefined
             )}
-            value={this.state.species}
-            onChange={e => this.setState({ species: e.target.value })}
-            onSelect={species => this.setState({ species })}
-          />
+            {this.state.month ? (
+              <div className="form-inline searchform">
+                <label>Year:</label>
+                <SearchFormYears
+                  passFunction={this.handlerFunction}
+                  species={this.state.species}
+                  month={this.state.month}
+                />
+              </div>
+            ) : (
+              undefined
+            )}
 
-          {this.state.species ? (
-            <div className="form-inline searchform">
-              <label>Month:</label>
-              <SearchFormMonths
-                passFunction={this.handlerFunction}
-                species={this.state.species}
+            {this.state.year ? (
+              <input
+                className="linkButton buttonSearchform"
+                type="submit"
+                value="submit"
               />
-            </div>
-          ) : (
-            undefined
-          )}
-          {this.state.month ? (
-            <div className="form-inline searchform">
-              <label>Year:</label>
-              <SearchFormYears
-                passFunction={this.handlerFunction}
-                species={this.state.species}
-                month={this.state.month}
-              />
-            </div>
-          ) : (
-            undefined
-          )}
-
-          {this.state.year ? (
-            <input
-              className="linkButton buttonSearchform"
-              type="submit"
-              value="submit"
-            />
-          ) : (
-            undefined
-          )}
-        </form>
+            ) : (
+              undefined
+            )}
+          </form>
+        </div>
       </div>
     );
   }
