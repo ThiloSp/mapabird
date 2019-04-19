@@ -13,8 +13,6 @@ export default class UserInfo extends Component {
     this.service
       .getUserInfo(creatorId)
       .then(responseFromApi => {
-        // console.log("creatorId: ", creatorId);
-        // console.log("responseFromApi2: ", responseFromApi);
         this.setState(responseFromApi);
       })
       .catch(err => {
