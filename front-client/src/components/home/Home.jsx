@@ -19,7 +19,7 @@ const home = () => {
             >
               <div className="card">
                 <img
-                  src="/images/mapBirdsx.png"
+                  src="/images/mapBirds.png"
                   className="card-img-top"
                   alt="..."
                 />
@@ -36,7 +36,7 @@ const home = () => {
             >
               <div className="card">
                 <img
-                  src="/images/forumx.png"
+                  src="/images/forum.png"
                   className="card-img-top"
                   alt="..."
                 />
