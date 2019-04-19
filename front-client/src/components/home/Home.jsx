@@ -6,9 +6,9 @@ const home = () => {
   return (
     <div>
       <div className="containerLogo">
-        <h2>
+      
           <img className="titleLogo" src="/images/aguila-red.png" alt="" />
-        </h2>
+      
       </div>
       <div className="container marginCon">
         <div className="row">
@@ -17,10 +17,10 @@ const home = () => {
               style={{ textDecoration: "none", color: "#F1F1F1" }}
               to="/mapbirds"
             >
-              <div className="card cardheight">
+              <div className="card">
                 <img
-                  src="/images/mapBirds.png"
-                  className="card-img-top cardImg"
+                  src="/images/mapBirdsx.png"
+                  className="card-img-top"
                   alt="..."
                 />
                 <div className="card-body cardText">
@@ -34,10 +34,10 @@ const home = () => {
               style={{ textDecoration: "none", color: "#F1F1F1" }}
               to="/threads"
             >
-              <div className="card cardheight">
+              <div className="card">
                 <img
-                  src="/images/forum.png"
-                  className="card-img-top cardImg"
+                  src="/images/forumx.png"
+                  className="card-img-top"
                   alt="..."
                 />
                 <div className="card-body cardText">
