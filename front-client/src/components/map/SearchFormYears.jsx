@@ -5,7 +5,6 @@ export default class SearchFormYears extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      month: this.props.month,
       years: []
     };
     this.service = new MapService();
@@ -19,8 +18,6 @@ export default class SearchFormYears extends Component {
   };
 
   handleChange = event => {
-    const { name, value } = event.target; //löschen?
-    this.setState({ [name]: value }); //löschen?
     this.props.passFunction(event);
   };
 

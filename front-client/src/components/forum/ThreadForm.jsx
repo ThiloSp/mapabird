@@ -34,9 +34,7 @@ export default class ThreadForm extends Component {
       this.props.allBirdPoints[0].sciName
     })`;
 
-    this.mapService.saveNewSearch(birdsToSave).then(response => {
-      // console.log("saveresponse is: ", response);
-    });
+    this.mapService.saveNewSearch(birdsToSave).then(response => {});
     this.forumService
       .addNewThread(
         content,

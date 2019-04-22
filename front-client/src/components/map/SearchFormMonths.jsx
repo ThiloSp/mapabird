@@ -5,7 +5,6 @@ export default class SearchFormMonths extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      month: "",
       months: []
     };
     this.service = new MapService();
@@ -13,14 +12,11 @@ export default class SearchFormMonths extends Component {
   componentDidMount = () => {
     const enteredSpecies = this.props.species;
     this.service.getMonths(enteredSpecies).then(months => {
-      // console.log("returned months: ", months);
       this.setState({ ...this.state, months: months });
     });
   };
 
   handleChange = event => {
-    const { name, value } = event.target; //löschen?
-    this.setState({ [name]: value }); //löschen?
     this.props.passFunction(event);
   };
 

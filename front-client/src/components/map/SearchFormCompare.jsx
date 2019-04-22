@@ -17,8 +17,6 @@ export default class SearchFormCompare extends Component {
   }
 
   handleFormSubmit = event => {
-    // console.log("state is now1: ", this.state);
-    console.log(this.props.searchName);
     event.preventDefault();
     const searchName = this.props.searchName;
     const species = this.state.species;
@@ -29,20 +27,8 @@ export default class SearchFormCompare extends Component {
     this.service
       .makeNewSearch(searchName, species, month, year, search)
       .then(response => {
-        // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
-      })
-      // .then(() => {
-      //   this.setState({
-      //     searchName: "",
-      //     species: "",
-      //     month: "",
-      //     year: "",
-      //     search: ""
-      //   });
-      //   // console.log("state is now2: ", this.state);
-      // })
-      // .catch(error => console.log(error));
+      });
   };
 
   handleChange = event => {

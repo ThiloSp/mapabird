@@ -19,7 +19,6 @@ export default class SearchForm extends Component {
   }
 
   handleFormSubmit = event => {
-    // console.log("state is now1: ", this.state);
     event.preventDefault();
     const searchName = this.state.searchName;
     const species = this.state.species;
@@ -30,21 +29,8 @@ export default class SearchForm extends Component {
     this.service
       .makeNewSearch(searchName, species, month, year, search)
       .then(response => {
-        // console.log("searchresponse is: ", response);
         this.props.passFunction(response);
       });
-    // .then(() => {
-    //   this.setState({
-    //     searchName: "",
-    //     species: "",
-    //     month: "",
-    //     year: "",
-    //     search: "",
-    //     birdnames: []
-    //   });
-    //   // console.log("state is now2: ", this.state);
-    // })
-    // .catch(error => console.log(error));
   };
 
   handleChange = event => {
@@ -62,7 +48,6 @@ export default class SearchForm extends Component {
   };
 
   render() {
-    // console.log("this.state: ", this.state);
     return (
       <div>
         <div className="birdName">

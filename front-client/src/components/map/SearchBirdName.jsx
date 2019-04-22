@@ -22,7 +22,6 @@ export default class SearchBirdName extends Component {
   };
 
   handleFormSubmit = event => {
-    console.log("state is now1: ", this.state);
     event.preventDefault();
     const species = this.state.species;
     this.props.passFunction(species);
