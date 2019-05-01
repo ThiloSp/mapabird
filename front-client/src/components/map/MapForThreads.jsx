@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import  MapContainer  from "./Mapcontainer";
+import MapContainer from "./Mapcontainer";
 import MapService from "./map-service";
 import data from "../../data.json";
 
@@ -16,11 +16,9 @@ export default class MapForThreads extends Component {
 
   getThreadBirds = () => {
     const searchName = this.props.searchName;
-    // console.log("this is searchName: ", searchName);
     this.service
       .getBirdsFromBack(searchName)
       .then(response => {
-        // console.log("this is response: ", response.data);
         this.setState({ allBirdPoints: response.data });
       })
       .catch(err => {

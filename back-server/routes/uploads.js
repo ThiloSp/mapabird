@@ -1,12 +1,10 @@
 const express = require("express");
 const uploads = express.Router();
 const uploader = require("../configs/cloudinary-setup");
-const User = require("../models/User")
+const User = require("../models/User");
 
 uploads.post("/upload", uploader.single("photoPath"), (req, res, next) => {
   // console.log("file is: ", req.file);
-  // console.log("URL is: ", req.file.secure_url);
-  // console.log("userID: ", req.body);
   if (!req.file) {
     next(new Error("No file uploaded!"));
     return;
@@ -17,11 +15,8 @@ uploads.post("/upload", uploader.single("photoPath"), (req, res, next) => {
 });
 
 uploads.put("/update", (req, res, next) => {
-  console.log("this is req.body: ",req.body)
   const photoPath = req.body.response.secure_url;
   const userId = req.body.userID;
-  console.log("this is req.body.secure_url: ",photoPath)
-  console.log("this is req.body.userID: ",userId)
   User.findOneAndUpdate(
     { _id: userId },
     { $set: { photoPath: photoPath } },

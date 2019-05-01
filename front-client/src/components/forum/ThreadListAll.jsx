@@ -11,12 +11,9 @@ export default class ThreadListAll extends Component {
 
   getList = () => {
     this.service.getAllThreads().then(response => {
-      // console.log("response1 is: ", response)
-      console.log("response1 threads is: ", response.threads);
       this.setState({
         listOfThreads: response.threads
       });
-      // console.log(this.state.listOfThreads);
     });
   };
 

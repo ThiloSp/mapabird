@@ -9,18 +9,14 @@ export default class SaveForm extends Component {
   }
 
   handleFormSubmit = event => {
-    // console.log("state is now1: ", this.state);
     event.preventDefault();
     const birdsToSave = this.props.allBirdPoints;
     birdsToSave.forEach(data => (data.searchName = this.state.searchName));
     this.service
       .saveNewSearch(birdsToSave)
-      .then(response => {
-        // console.log("saveresponse is: ", response);
-      })
+      .then(response => {})
       .then(() => {
         this.setState({ searchName: "" });
-        // console.log("state is now2: ", this.state);
       })
       .catch(error => console.log(error));
   };
@@ -31,7 +27,6 @@ export default class SaveForm extends Component {
   };
 
   render() {
-    // console.log(this.state);
     return (
       <div className="searchForm">
         <form

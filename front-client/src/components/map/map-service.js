@@ -10,13 +10,12 @@ class MapService {
   }
 
   makeNewSearch = (searchName, species, month, year, search) => {
-      return this.service
+    return this.service
       .post("/search", { searchName, species, month, year, search })
       .then(response => response.data);
   };
 
   saveNewSearch = birdsToSave => {
-    console.log("this is birdsToSave: ", birdsToSave);
     return this.service
       .post("/save", { birdsToSave })
       .then(response => response.data);
@@ -33,14 +32,12 @@ class MapService {
   };
 
   getMonths = enteredSpecies => {
-    // console.log("in service: ", enteredSpecies);
     return this.service
       .post("/months", { enteredSpecies })
       .then(response => response.data);
   };
 
   getYears = (enteredSpecies, enteredMonth) => {
-    // console.log("in service: ", enteredSpecies);
     return this.service
       .post("/years", { enteredSpecies, enteredMonth })
       .then(response => response.data);

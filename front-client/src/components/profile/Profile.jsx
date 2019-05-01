@@ -23,25 +23,20 @@ class Profile extends Component {
   }
 
   handleFileUpload = e => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
-    // console.log("user ID: ", this.state.loggedInUser._id);
     const userID = this.state.loggedInUser._id;
     const uploadData = new FormData();
     uploadData.append("photoPath", e.target.files[0]);
     this.profileService
       .handleUpload(uploadData)
       .then(response => {
-        // console.log("response is: ", response);
         this.setState({
           ...this.state,
           loggedInUser: { photoPath: response.secure_url }
         });
-        // console.log(this.state);
+
         this.profileService
           .updatePhotoProfile(response, userID)
-          .then(response => {
-            // console.log(response);
-          });
+          .then(response => {});
       })
       .catch(err => {
         console.log("Error while uploading the file: ", err);

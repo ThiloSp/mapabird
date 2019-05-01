@@ -14,7 +14,6 @@ export default class CommentDetail extends Component {
     this.service
       .getCommentDetail(commentId)
       .then(responseFromApi => {
-        // console.log("responseFromApi: ", responseFromApi);
         this.setState(responseFromApi);
       })
       .catch(err => {
